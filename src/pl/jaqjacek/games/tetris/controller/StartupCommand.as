@@ -17,8 +17,9 @@ package pl.jaqjacek.games.tetris.controller
 		
 		override protected function initializeMacroCommand():void 
 		{
-			this.addSubCommand(CommandRegisterCommand);
+			this.addSubCommand(MediatorRegisterCommand);
 			this.addSubCommand(ProxyRegisterCommand);
+			this.addSubCommand(CommandRegisterCommand);
 			//super.initializeMacroCommand();
 		}
 	}

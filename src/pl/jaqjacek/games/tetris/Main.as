@@ -20,6 +20,7 @@ package pl.jaqjacek.games.tetris
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
 			new AppFacade().startup(this);
+			
 			// entry point
 		}
 		
