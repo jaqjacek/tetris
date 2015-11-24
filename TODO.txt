@@ -1,0 +1,33 @@
+0.1
+- working compiling project 
+- repo added to github
+- link needed libraries ( puremvc actuate )
+0.2
+- standard classes skelet
+- version plugin
+0.3
+- creating block from string or some block class
+- showing main screen
+0.4
+- showing block on screen
+- moving block down
+- saving block to screen block array
+0.5
+- moving block to sides ( checking to not move outside )
+- checking if is full line of blocks removing lines of block
+- checking if screen is full if yes restart game
+0.6
+- diffrent type of blocks from BlockFactory, getBlock with diffrent probability
+- rotating block
+0.7
+- chacking rotation of block neer asambled block on screen
+- HUD with time, points, current level 
+- change falling block speed according to its level
+0.8
+- start screen
+- game over screen
+- buttons
+0.9
+- sounds big refactoring
+- bug testing
+1.0
