@@ -10,7 +10,7 @@ package pl.jaqjacek.games.tetris.model
 		static public function getRandomBlock():BlockVO
 		{
 			//TODO return random block from diffrent block TYPES
-			var tmpBlock:BlockVO = new BlockVO(2, 2, 0, "11|10");
+			var tmpBlock:BlockVO = new BlockVO(3, 3, 0, "111|010");
 			return tmpBlock
 		}
 		

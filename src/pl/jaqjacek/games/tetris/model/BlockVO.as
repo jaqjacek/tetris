@@ -27,11 +27,11 @@ package pl.jaqjacek.games.tetris.model
 			var stringArray:Array = p_blockString.split("|");
 			for (var i:int = 0; i < blockHeight; i++) 
 			{
-				var row:Vector.<int> = new Vector.<int>(blockWidth);
+				var row:Vector.<int> = new Vector.<int>(blockHeight);
 				var stringRow:String = stringArray.shift();
-				for (var j:int = 0; j < blockWidth; j++) 
+				for (var j:int = 0; j < blockHeight; j++) 
 				{
-					if (stringRow.length < j - 1 || stringRow.charAt(j) == '0' ) {
+					if (stringRow == null || stringRow.length < j - 1 || stringRow.charAt(j) == '0' ) {
 						row[j] = 0;
 					}
 					else {
@@ -44,7 +44,7 @@ package pl.jaqjacek.games.tetris.model
 		
 		public function getBlockAt(x:int=0,y:int =0 ):int
 		{
-			return _vectorBlock[x][y];
+			return _vectorBlock[y][x];
 		}
 		
 	}

@@ -34,8 +34,9 @@ package pl.jaqjacek.games.tetris.view
 			{
 				for (var j:int = 0; j < _block.blockHeight; j++) 
 				{
-					if(_block.getBlockAt(i,j)) {
-						_blockView.createBlockAt(i*50,j*50,_block.getBlockAt(i, j) * _block.blockColor);
+					if (_block.getBlockAt(j, i)) {
+						trace(j, i);
+						_blockView.createBlockAt(j*50,i*50,_block.getBlockAt(j, i) * _block.blockColor);
 					}
 				}
 			}
