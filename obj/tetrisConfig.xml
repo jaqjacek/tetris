@@ -33,11 +33,16 @@
     <verbose-stacktraces>true</verbose-stacktraces>
     <source-path append="true">
       <path-element>W:\tetris\src</path-element>
+      <path-element>W:\tetris\lib-src</path-element>
       <path-element>W:\_flashDevelop\Library\AS3\classes</path-element>
     </source-path>
+    <library-path append="true">
+      <path-element>W:\tetris\lib\actuate.swc</path-element>
+      <path-element>W:\tetris\lib\AS3Signals.swc</path-element>
+    </library-path>
   </compiler>
   <file-specs>
-    <path-element>W:\tetris\src\Main.as</path-element>
+    <path-element>W:\tetris\src\pl\jaqjacek\games\tetris\Main.as</path-element>
   </file-specs>
   <default-background-color>#FFFFFF</default-background-color>
   <default-frame-rate>30</default-frame-rate>

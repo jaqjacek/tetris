@@ -1,4 +1,4 @@
-package
+package pl.jaqjacek.games.tetris
 {
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -19,6 +19,7 @@ package
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			new AppFacade().startup(this);
 			// entry point
 		}
 		
