@@ -1,0 +1,40 @@
+<DOMDocument xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" currentTimeline="1" xflVersion="2.2" creatorInfo="Adobe Flash Professional CS6" platform="Windows" versionInfo="Saved by Adobe Flash Windows 12.0 build 481" majorVersion="12" buildNumber="481" nextSceneIdentifier="2" playOptionsPlayLoop="false" playOptionsPlayPages="false" playOptionsPlayFrameActions="false">
+     <media>
+          <DOMBitmapItem name="block_blue.png" itemID="56560e4d-0000023e" sourceExternalFilepath="./LIBRARY/block_blue.png" sourceLastImported="1403790902" externalFileCRC32="1930573455" externalFileSize="347" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_blue.png" bitmapDataHRef="M 2 1448480194.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="block_cyan.png" itemID="56560e4d-0000023f" sourceExternalFilepath="./LIBRARY/block_cyan.png" sourceLastImported="1403790922" externalFileCRC32="188111493" externalFileSize="347" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_cyan.png" bitmapDataHRef="M 3 1448480194.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="block_green.png" itemID="56560e4d-00000240" sourceExternalFilepath="./LIBRARY/block_green.png" sourceLastImported="1403790894" externalFileCRC32="4025486954" externalFileSize="347" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_green.png" bitmapDataHRef="M 4 1448480194.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="block_orange.png" itemID="56560e4d-00000241" sourceExternalFilepath="./LIBRARY/block_orange.png" sourceLastImported="1403790882" externalFileCRC32="3725902506" externalFileSize="340" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_orange.png" bitmapDataHRef="M 5 1448480194.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="block_purple.png" itemID="56560e4d-00000242" sourceExternalFilepath="./LIBRARY/block_purple.png" sourceLastImported="1403790910" externalFileCRC32="3407566606" externalFileSize="347" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_purple.png" bitmapDataHRef="M 6 1448480194.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="block_red.png" itemID="56560e4d-00000243" sourceExternalFilepath="./LIBRARY/block_red.png" sourceLastImported="1403790860" externalFileCRC32="638730855" externalFileSize="347" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_red.png" bitmapDataHRef="M 7 1448480194.dat" frameRight="320" frameBottom="320"/>
+          <DOMBitmapItem name="block_yellow.png" itemID="56560e4d-00000244" sourceExternalFilepath="./LIBRARY/block_yellow.png" sourceLastImported="1403790870" externalFileCRC32="1191845146" externalFileSize="344" useImportedJPEGData="false" compressionType="lossless" originalCompressionType="lossless" quality="50" href="block_yellow.png" bitmapDataHRef="M 8 1448480194.dat" frameRight="320" frameBottom="320"/>
+     </media>
+     <symbols>
+          <Include href="blocks.xml" itemID="56560df2-00000206" lastModified="1448480369"/>
+     </symbols>
+     <timelines>
+          <DOMTimeline name="Scene 1">
+               <layers>
+                    <DOMLayer name="Layer 1" color="#4FFF4F" current="true" isSelected="true">
+                         <frames>
+                              <DOMFrame index="0" keyMode="9728">
+                                   <elements>
+                                        <DOMSymbolInstance libraryItemName="blocks" selected="true" centerPoint3DX="190.3" centerPoint3DY="228.3">
+                                             <matrix>
+                                                  <Matrix tx="190.3" ty="228.3"/>
+                                             </matrix>
+                                             <transformationPoint>
+                                                  <Point/>
+                                             </transformationPoint>
+                                        </DOMSymbolInstance>
+                                   </elements>
+                              </DOMFrame>
+                         </frames>
+                    </DOMLayer>
+               </layers>
+          </DOMTimeline>
+     </timelines>
+     <PrinterSettings/>
+     <publishHistory>
+          <PublishItem publishSize="1674" publishTime="1448480402"/>
+     </publishHistory>
+</DOMDocument>

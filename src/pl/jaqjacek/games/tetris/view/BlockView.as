@@ -24,16 +24,11 @@ package pl.jaqjacek.games.tetris.view
 			visible = false;
 		}
 		
-		public function createBlockAt(x:int,y:int,color:int=0):void 
+		public function createBlockAt(x:int,y:int,block:MovieClip):void 
 		{
-			//TODO add movieclip from blocks swc
-			var colorSprite:MovieClip = new MovieClip();
-			colorSprite.graphics.beginFill(0x00ff00);
-			colorSprite.graphics.drawRect(0,0,50,50);
-			colorSprite.graphics.endFill();
-			colorSprite.x = x; 
-			colorSprite.y = y;
-			addChild(colorSprite);
+			block.x = x*block.width; 
+			block.y = y*block.height;
+			addChild(block);
 		}
 		
 		public function clean():void 

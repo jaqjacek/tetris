@@ -1,6 +1,8 @@
 package pl.jaqjacek.games.tetris.view 
 {
+	import flash.display.MovieClip;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import pl.jaqjacek.games.tetris.model.BlockProxy;
 	import pl.jaqjacek.games.tetris.model.BlockVO;
 	
 	/**
@@ -28,6 +30,8 @@ package pl.jaqjacek.games.tetris.view
 		
 		public function setBlock(block:BlockVO):void 
 		{
+			var blockProxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
+			var blockProxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
 			_block = block;
 			_blockView.clean();
 			for (var i:int = 0; i < _block.blockWidth; i++) 
@@ -35,10 +39,15 @@ package pl.jaqjacek.games.tetris.view
 				for (var j:int = 0; j < _block.blockHeight; j++) 
 				{
 					if (_block.getBlockAt(i, j)) {
-						_blockView.createBlockAt(i*50,j*50,_block.getBlockAt(i, j) * _block.blockColor);
+						addBlockToView(i, j, blockProxy.getBlockMedia(_block.blockColor));
 					}
 				}
 			}
+		}
+		
+		public function addBlockToView(x:int,y:int,block:MovieClip):void 
+		{
+			_blockView.createBlockAt(x,y,block);
 		}
 		
 		override public function onRemove():void 

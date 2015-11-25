@@ -39,6 +39,7 @@
     <library-path append="true">
       <path-element>W:\tetris\lib\actuate.swc</path-element>
       <path-element>W:\tetris\lib\AS3Signals.swc</path-element>
+      <path-element>W:\tetris\lib\assets.swc</path-element>
     </library-path>
   </compiler>
   <file-specs>

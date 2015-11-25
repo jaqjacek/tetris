@@ -55,6 +55,7 @@
   <libraryPaths>
     <element path="lib\actuate.swc" />
     <element path="lib\AS3Signals.swc" />
+    <element path="lib\assets.swc" />
   </libraryPaths>
   <!-- External Libraries -->
   <externalLibraryPaths>
