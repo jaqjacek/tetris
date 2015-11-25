@@ -22,10 +22,10 @@ package pl.jaqjacek.games.tetris.view.debug
 		override public function listNotificationInterests():Array 
 		{
 			return [
-				DebugNotifications.SHOW_BLOCK,
-				DebugNotifications.UPDATE_BLOCK,
-				DebugNotifications.REMOVE_BLOCK,
-				DebugNotifications.ROTATE_BLOCK
+				mediatorName+DebugNotifications.SHOW_BLOCK,
+				mediatorName+DebugNotifications.UPDATE_BLOCK,
+				mediatorName+DebugNotifications.REMOVE_BLOCK,
+				mediatorName+DebugNotifications.ROTATE_BLOCK
 			];
 		}
 		
@@ -36,10 +36,10 @@ package pl.jaqjacek.games.tetris.view.debug
 			var nBody:Object = notification.getBody();
 			switch (nName) 
 			{
-				case DebugNotifications.SHOW_BLOCK:
+				case mediatorName+DebugNotifications.SHOW_BLOCK:
 					getStage().addChild(_blockView);
 				break;
-				case DebugNotifications.UPDATE_BLOCK:
+				case mediatorName+DebugNotifications.UPDATE_BLOCK:
 					setBlock(nBody as BlockVO);
 				break;
 				default:

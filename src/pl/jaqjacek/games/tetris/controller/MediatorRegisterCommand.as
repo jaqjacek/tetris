@@ -18,7 +18,7 @@ package pl.jaqjacek.games.tetris.controller
 		
 		override public function execute(notification:INotification):void 
 		{
-			facade.registerMediator(new DebugBlockMediator("debug_block_mediator", notification.getBody()));
+			facade.registerMediator(new DebugBlockMediator("debug_block_mediator_", notification.getBody()));
 		}
 		
 	}
