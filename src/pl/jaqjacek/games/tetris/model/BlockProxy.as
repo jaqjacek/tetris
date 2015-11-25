@@ -33,7 +33,7 @@ package pl.jaqjacek.games.tetris.model
 			_blocks.push(new BlockVO(1,"11|11"));
 			_blocks.push(new BlockVO(2,"111|01"));
 			_blocks.push(new BlockVO(3,"111|1"));
-			
+			_blocks.push(new BlockVO(3,"001|111"));
 		}
 		
 		public function getRandomBlock():BlockVO

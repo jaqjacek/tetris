@@ -29,7 +29,6 @@ package pl.jaqjacek.games.tetris.view
 		public function setBlock(block:BlockVO):void 
 		{
 			_block = block;
-			trace(_block.blockString);
 			_blockView.clean();
 			for (var i:int = 0; i < _block.blockWidth; i++) 
 			{

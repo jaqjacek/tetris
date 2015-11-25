@@ -21,26 +21,32 @@ package pl.jaqjacek.games.tetris.model
 		
 		public function setFromString(p_blockString:String):void 
 		{
+			_vectorBlock = new Vector.<Vector.<int>>();
+			//set max block width
 			var stringArray:Array = p_blockString.split("|");
 			for (var kk:int = 0; kk < stringArray.length; kk++) 
 			{
-				blockWidth = Math.max(stringArray[kk].length, blockWidth);
+				blockHeight = Math.max(stringArray[kk].length, blockHeight);
 			}
-			blockHeight = stringArray.length;
-			_vectorBlock = new Vector.<Vector.<int>>(blockHeight);
-			for (var i:int = 0; i < blockHeight; i++) 
+			//set max block height
+			blockWidth = stringArray.length;
+			for (var i:int = 0; i < blockWidth; i++) 
 			{
-				_vectorBlock[i] = new Vector.<int>(blockWidth);
-			}
-			
-			for (var k:int = 0; k < stringArray.length; k++) 
-			{
-				var tmpString:String = stringArray[k];
-				for (var j:int = 0; j < blockWidth; j++) 
+				_vectorBlock[i] = new Vector.<int>();
+				for (var l:int = 0; l < blockHeight; l++) 
 				{
-					_vectorBlock[j][k] = 0;
-					if (tmpString != null != tmpString.charAt(k) == "1") {
-						_vectorBlock[j][k] = 1;
+					_vectorBlock[i][l] = 0;
+				}
+			}
+			for (var k:int = 0; k < blockWidth; k++) 
+			{
+				var tmpString:String = stringArray.shift();
+				if (tmpString != null) {
+					for (var j:int = 0; j < tmpString.length; j++) 
+					{
+						if(tmpString.charAt(j) == "1") {
+							_vectorBlock[k][j] = 1;
+						}
 					}
 				}
 				
@@ -49,7 +55,6 @@ package pl.jaqjacek.games.tetris.model
 		
 		public function getBlockAt(x:int=0,y:int =0 ):int
 		{
-			trace("vector",_vectorBlock[y].length,x,y)
 			return _vectorBlock[x][y];
 		}
 		
