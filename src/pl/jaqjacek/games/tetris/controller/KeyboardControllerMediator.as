@@ -15,7 +15,7 @@ package pl.jaqjacek.games.tetris.controller
 	 */
 	public class KeyboardControllerMediator extends Mediator
 	{
-		
+		private var _dwonArrowPressed:Boolean;
 		public function KeyboardControllerMediator(viewComponent:Object=null) 
 		{
 			super(mediatorName, viewComponent);
@@ -37,6 +37,7 @@ package pl.jaqjacek.games.tetris.controller
 					facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.ROTATE_BLOCK);
 				break;
 				case Keyboard.DOWN:
+					_dwonArrowPressed = false;
 					facade.sendNotification(AppNotifications.STOP_SPEEDING_UP);
 				break;
 			}
@@ -46,7 +47,10 @@ package pl.jaqjacek.games.tetris.controller
 		{
 			switch(e.keyCode) {
 				case Keyboard.DOWN:
-					facade.sendNotification(AppNotifications.START_SPEEDING_UP);
+					if (!_dwonArrowPressed) {
+						_dwonArrowPressed = true;
+						facade.sendNotification(AppNotifications.START_SPEEDING_UP);
+					}
 				break;
 				case Keyboard.LEFT:
 					facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.MOVE_BLOCK, -1);

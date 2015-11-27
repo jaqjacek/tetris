@@ -22,9 +22,6 @@ package pl.jaqjacek.games.tetris.view
 		override public function onRegister():void 
 		{
 			super.onRegister();
-			_nextTickInc = 4;
-			_currentSpeed = 5;
-			_nextTickMoveDown = -1;
 		}
 		
 		override public function listNotificationInterests():Array 
@@ -33,7 +30,6 @@ package pl.jaqjacek.games.tetris.view
 			listNotifications.push(mediatorName+AppNotifications.ROTATE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK_DOWN);
-			listNotifications.push(AppNotifications.TIMER_TICK);
 			return listNotifications;
 		}
 		
@@ -61,18 +57,7 @@ package pl.jaqjacek.games.tetris.view
 				case mediatorName+AppNotifications.ROTATE_BLOCK:
 					rotateBlock();
 				break;
-				case AppNotifications.TIMER_TICK:
-					checkTick(nBody as int);
-				break;
 				default:
-			}
-		}
-		
-		private function checkTick(tick:int):void 
-		{
-			if (tick > _nextTickMoveDown) {
-				_nextTickMoveDown = tick + _nextTickInc;
-				facade.sendNotification(mediatorName+AppNotifications.MOVE_BLOCK_DOWN, _currentSpeed);
 			}
 		}
 		
