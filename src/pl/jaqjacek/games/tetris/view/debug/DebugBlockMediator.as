@@ -46,10 +46,7 @@ package pl.jaqjacek.games.tetris.view.debug
 			}
 		}
 		
-		private function getStage():DisplayObjectContainer
-		{
-			return viewComponent as DisplayObjectContainer;
-		}
+		
 		
 	}
 

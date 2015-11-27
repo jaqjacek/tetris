@@ -14,7 +14,8 @@ package pl.jaqjacek.games.tetris.model
 		
 		private var _blocks:Vector.<BlockVO>;
 		
-		private var _curentBlock:BlockVO;
+		public var curentBlock:BlockVO;
+		public var nextBlock:BlockVO;
 		
 		public function BlockProxy() 
 		{

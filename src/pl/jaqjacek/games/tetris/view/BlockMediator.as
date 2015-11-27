@@ -1,9 +1,12 @@
 package pl.jaqjacek.games.tetris.view 
 {
+	import flash.display.DisplayObjectContainer;
 	import flash.display.MovieClip;
+	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.tetris.model.BlockProxy;
 	import pl.jaqjacek.games.tetris.model.BlockVO;
+	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	
 	/**
 	 * ...
@@ -31,9 +34,9 @@ package pl.jaqjacek.games.tetris.view
 		public function setBlock(block:BlockVO):void 
 		{
 			var blockProxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
-			var blockProxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
 			_block = block;
 			_blockView.clean();
+			
 			for (var i:int = 0; i < _block.blockWidth; i++) 
 			{
 				for (var j:int = 0; j < _block.blockHeight; j++) 
@@ -55,6 +58,37 @@ package pl.jaqjacek.games.tetris.view
 			_block = null;
 			_blockView.clean();
 			_block = null;
+		}
+		
+		override public function listNotificationInterests():Array 
+		{
+			return [
+				mediatorName+AppNotifications.SHOW_BLOCK,
+				mediatorName+AppNotifications.UPDATE_BLOCK,
+				mediatorName+AppNotifications.REMOVE_BLOCK,
+				mediatorName+AppNotifications.ROTATE_BLOCK
+			];
+		}
+		
+		override public function handleNotification(notification:INotification):void 
+		{
+			var nName:String = notification.getName();
+			var nBody:Object = notification.getBody();
+			switch (nName) 
+			{
+				case mediatorName+AppNotifications.SHOW_BLOCK:
+					getStage().addChild(_blockView);
+				break;
+				case mediatorName+AppNotifications.UPDATE_BLOCK:
+					setBlock(nBody as BlockVO);
+				break;
+				default:
+			}
+		}
+		
+		protected function getStage():DisplayObjectContainer
+		{
+			return viewComponent as DisplayObjectContainer;
 		}
 		
 	}

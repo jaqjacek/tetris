@@ -2,7 +2,9 @@ package pl.jaqjacek.games.tetris.controller
 {
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
+	import pl.jaqjacek.games.tetris.controller.blocks.UpdateNextBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.debug.SetDebugBlockMediatorCommand;
+	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	import pl.jaqjacek.games.tetris.notifications.debug.DebugNotifications;
 	
 	/**
@@ -22,6 +24,11 @@ package pl.jaqjacek.games.tetris.controller
 			trace( "CommandRegisterCommand.execute > notification : " + notification );
 			//debug
 			facade.registerCommand(DebugNotifications.STARTUP, SetDebugBlockMediatorCommand);
+			
+			
+			//standard events
+			facade.registerCommand(AppNotifications.NEXT_BLOCK_UPDATE, UpdateNextBlockCommand);
+			facade.registerCommand(AppNotifications.START_GAME, StartGameCommand);
 		}
 		
 	}
