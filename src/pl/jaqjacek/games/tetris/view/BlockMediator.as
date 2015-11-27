@@ -18,6 +18,7 @@ package pl.jaqjacek.games.tetris.view
 		
 		protected var _blockView:BlockView;
 		public var _block:BlockVO;
+		public var blockSize:Number;
 		
 		
 		public function BlockMediator(mediatorName:String=null, viewComponent:Object=null) 
@@ -29,6 +30,7 @@ package pl.jaqjacek.games.tetris.view
 		override public function onRegister():void 
 		{
 			_blockView = new BlockView();
+			blockSize = 20;
 		}
 		
 		public function setBlock(block:BlockVO):void 
@@ -50,6 +52,7 @@ package pl.jaqjacek.games.tetris.view
 		
 		public function addBlockToView(x:int,y:int,block:MovieClip):void 
 		{
+			block.width = block.height = blockSize;
 			_blockView.createBlockAt(x,y,block);
 		}
 		
@@ -77,13 +80,18 @@ package pl.jaqjacek.games.tetris.view
 			switch (nName) 
 			{
 				case mediatorName+AppNotifications.SHOW_BLOCK:
-					getStage().addChild(_blockView);
+					showBlock();
 				break;
 				case mediatorName+AppNotifications.UPDATE_BLOCK:
 					setBlock(nBody as BlockVO);
 				break;
 				default:
 			}
+		}
+		
+		public function showBlock():void 
+		{
+			getStage().addChild(_blockView);
 		}
 		
 		protected function getStage():DisplayObjectContainer

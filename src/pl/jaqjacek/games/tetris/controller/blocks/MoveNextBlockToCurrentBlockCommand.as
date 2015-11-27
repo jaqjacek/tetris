@@ -4,6 +4,7 @@ package pl.jaqjacek.games.tetris.controller.blocks
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.tetris.model.BlockProxy;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
+	import pl.jaqjacek.games.tetris.view.CurrentBlockMediator;
 	
 	/**
 	 * ...
@@ -22,6 +23,8 @@ package pl.jaqjacek.games.tetris.controller.blocks
 			var proxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
 			proxy.curentBlock = proxy.nextBlock;
 			facade.sendNotification(AppNotifications.NEXT_BLOCK_UPDATE);
+			facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.SHOW_BLOCK);
+			facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.UPDATE_BLOCK,proxy.curentBlock);
 		}
 		
 	}

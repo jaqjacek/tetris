@@ -19,6 +19,7 @@ package pl.jaqjacek.games.tetris
 		private function init(e:Event = null):void 
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, init);
+			trace(this.stage);
 			new AppFacade().startup(this);
 			
 			// entry point
