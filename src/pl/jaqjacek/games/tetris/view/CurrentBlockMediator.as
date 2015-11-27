@@ -10,9 +10,21 @@ package pl.jaqjacek.games.tetris.view
 	public class CurrentBlockMediator extends BlockMediator 
 	{
 		public static const NAME:String = "CurrentBlockMediator_"
+		private var _nextTickMoveDown:int;
+		private var _nextTickInc:int;
+		private var _currentSpeed:Number;
+		
 		public function CurrentBlockMediator(viewComponent:Object=null) 
 		{
 			super(NAME, viewComponent);
+		}
+		
+		override public function onRegister():void 
+		{
+			super.onRegister();
+			_nextTickInc = 4;
+			_currentSpeed = 5;
+			_nextTickMoveDown = -1;
 		}
 		
 		override public function listNotificationInterests():Array 
@@ -21,6 +33,7 @@ package pl.jaqjacek.games.tetris.view
 			listNotifications.push(mediatorName+AppNotifications.ROTATE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK_DOWN);
+			listNotifications.push(AppNotifications.TIMER_TICK);
 			return listNotifications;
 		}
 		
@@ -30,7 +43,8 @@ package pl.jaqjacek.games.tetris.view
 			var nName:String = notification.getName();
 			var nBody:Object = notification.getBody();
 			var directionX:int;
-			var directionY:Number
+			var directionY:Number;
+			var currentTick:int;
 			switch (nName) 
 			{
 				case mediatorName+AppNotifications.MOVE_BLOCK:
@@ -47,7 +61,18 @@ package pl.jaqjacek.games.tetris.view
 				case mediatorName+AppNotifications.ROTATE_BLOCK:
 					rotateBlock();
 				break;
+				case AppNotifications.TIMER_TICK:
+					checkTick(nBody as int);
+				break;
 				default:
+			}
+		}
+		
+		private function checkTick(tick:int):void 
+		{
+			if (tick > _nextTickMoveDown) {
+				_nextTickMoveDown = tick + _nextTickInc;
+				facade.sendNotification(mediatorName+AppNotifications.MOVE_BLOCK_DOWN, _currentSpeed);
 			}
 		}
 		

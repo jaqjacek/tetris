@@ -24,6 +24,7 @@ package pl.jaqjacek.games.tetris.controller
 			facade.registerMediator(new NextBlockMediator(notification.getBody()));
 			facade.registerMediator(new CurrentBlockMediator(notification.getBody()));
 			facade.registerMediator(new KeyboardControllerMediator(notification.getBody()));
+			facade.registerMediator(new TimeControlerMediator(notification.getBody()));
 		}
 		
 	}

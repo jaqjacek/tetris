@@ -21,6 +21,7 @@ package pl.jaqjacek.games.tetris.controller
 			trace( "StartGameCommand.execute > notification : " + notification );
 			facade.sendNotification(AppNotifications.NEXT_BLOCK_UPDATE);
 			facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
+			facade.sendNotification(AppNotifications.START_TIMER);
 		}
 		
 	}
