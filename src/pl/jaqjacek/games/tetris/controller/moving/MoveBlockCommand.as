@@ -25,23 +25,25 @@ package pl.jaqjacek.games.tetris.controller.moving
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
 			
 			var side:int = notification.getBody() as int;
+			//check moving outside board
+			var notifiCationToSend:String = AppNotifications.CANT_MOVE_BLOCK;
 			switch (side) 
 			{
 				case -1:
 					if (proxy.currentBlockBlockPositionX  > 0) {
 						proxy.currentBlockBlockPositionX--;
-						facade.sendNotification(CurrentBlockMediator.NAME + AppNotifications.MOVE_BLOCK);
+						notifiCationToSend = CurrentBlockMediator.NAME + AppNotifications.MOVE_BLOCK
 					}
 				break;
 				case 1:
 					if (proxy.currentBlockBlockPositionX  < proxy.gameBoardWidth - blockProxy.curentBlock.blockWidth) {
 						proxy.currentBlockBlockPositionX++;
-						facade.sendNotification(CurrentBlockMediator.NAME + AppNotifications.MOVE_BLOCK);
+						notifiCationToSend = CurrentBlockMediator.NAME + AppNotifications.MOVE_BLOCK
 					}
 				break;
 				default:
 			}
-			
+			facade.sendNotification(notifiCationToSend);
 		}
 		
 	}

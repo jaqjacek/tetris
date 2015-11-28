@@ -35,6 +35,7 @@ package pl.jaqjacek.games.tetris.notifications
 		static public const TIMER_TICK:String = "timerTick";
 		static public const SHOW_BOARD:String = "showBoard";
 		static public const HIDE_BOARD:String = "hideBoard";
+		static public const CANT_MOVE_BLOCK:String = "cantMoveBlock";
 	}
 
 }
