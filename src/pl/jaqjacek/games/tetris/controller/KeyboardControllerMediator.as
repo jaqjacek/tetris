@@ -53,10 +53,10 @@ package pl.jaqjacek.games.tetris.controller
 					}
 				break;
 				case Keyboard.LEFT:
-					facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.MOVE_BLOCK, -1);
+					facade.sendNotification(AppNotifications.MOVE_BLOCK, -1);
 				break;
 				case Keyboard.RIGHT:
-					facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.MOVE_BLOCK, 1);
+					facade.sendNotification(AppNotifications.MOVE_BLOCK, 1);
 				break;
 			}
 		}

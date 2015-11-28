@@ -1,5 +1,6 @@
 package pl.jaqjacek.games.tetris.model 
 {
+	import flash.geom.Point;
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
 	/**
@@ -19,6 +20,8 @@ package pl.jaqjacek.games.tetris.model
 		public var gameBoardHeight:int;
 		public var gameBoardViewStartX:Number;
 		public var gameBoardViewStartY:Number;
+		public var currentBlockBlockPositionX:int;
+		public var currentBlockBlockPositionY:int;
 		
 		public function ParamsProxy() 
 		{
@@ -36,6 +39,18 @@ package pl.jaqjacek.games.tetris.model
 			gameBlockSize = 20;
 			gameBoardViewStartX = 200;
 			gameBoardViewStartY = 0;
+			resetCurrentBlockPosition();
+		}
+		
+		public function resetCurrentBlockPosition():void 
+		{
+			currentBlockBlockPositionX = Math.floor(gameBoardWidth / 2);
+			currentBlockBlockPositionY = Math.floor(gameBoardHeight / 2);
+		}
+		
+		public function getCurrentBlockViewX():Number
+		{
+			return currentBlockBlockPositionX * gameBlockSize + gameBoardViewStartX;
 		}
 		
 		public function getMoveDownDistance():Number
