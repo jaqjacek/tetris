@@ -14,6 +14,11 @@ package pl.jaqjacek.games.tetris.model
 		public var currentLevel:int;
 		public var nextTickMoveDown:int;
 		public var nextTickInc:int;
+		public var gameBoardWidth:int;
+		public var gameBlockSize:int;
+		public var gameBoardHeight:int;
+		public var gameBoardViewStartX:Number;
+		public var gameBoardViewStartY:Number;
 		
 		public function ParamsProxy() 
 		{
@@ -26,7 +31,11 @@ package pl.jaqjacek.games.tetris.model
 			speedMultiplayer = 1;
 			currentLevel = 1;
 			nextTickInc = 4;
-			trace('register params proxy');
+			gameBoardWidth = 16;
+			gameBoardHeight = 30;
+			gameBlockSize = 20;
+			gameBoardViewStartX = 200;
+			gameBoardViewStartY = 0;
 		}
 		
 		public function getMoveDownDistance():Number

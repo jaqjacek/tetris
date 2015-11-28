@@ -6,6 +6,7 @@ package pl.jaqjacek.games.tetris.view
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.tetris.model.BlockProxy;
 	import pl.jaqjacek.games.tetris.model.BoardBlockVO;
+	import pl.jaqjacek.games.tetris.model.ParamsProxy;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	
 	/**
@@ -26,7 +27,8 @@ package pl.jaqjacek.games.tetris.view
 		
 		override public function onRegister():void 
 		{
-			_boardBlock = new BoardBlockVO(2, 15, 20);
+			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
+			_boardBlock = new BoardBlockVO(2, proxy.gameBoardWidth, proxy.gameBoardHeight);
 			_boardView = new BoardView();
 		}
 		
@@ -68,11 +70,16 @@ package pl.jaqjacek.games.tetris.view
 					addBlockToView(i, j, blockProxy.getBlockMedia(_boardBlock.blockColor));
 				}
 			}
+			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
+			_boardView.x = proxy.gameBoardViewStartX;
+			_boardView.y = proxy.gameBoardViewStartY;
+
 		}
 		
 		public function addBlockToView(x:int,y:int,block:MovieClip):void 
 		{
-			block.width = block.height = 20;
+			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
+			block.width = block.height = proxy.gameBlockSize;
 			_boardView.createBlockAt(x,y,block);
 		}
 		
