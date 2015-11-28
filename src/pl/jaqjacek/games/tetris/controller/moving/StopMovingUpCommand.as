@@ -8,10 +8,10 @@ package pl.jaqjacek.games.tetris.controller.moving
 	 * ...
 	 * @author jaq
 	 */
-	public class StartMovingUpCommand extends SimpleCommand 
+	public class StopMovingUpCommand extends SimpleCommand 
 	{
 		
-		public function StartMovingUpCommand() 
+		public function StopMovingUpCommand() 
 		{
 			super();
 		}
@@ -19,7 +19,7 @@ package pl.jaqjacek.games.tetris.controller.moving
 		override public function execute(notification:INotification):void 
 		{
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
-			proxy.speedMultiplayer = 3;
+			proxy.speedMultiplayer = 1;
 		}
 		
 	}

@@ -70,12 +70,15 @@ package pl.jaqjacek.games.tetris.view
 		
 		public function rotateBlock():void 
 		{
-			
+			_block.goToNextFormation();
+			super.setBlock(_block);
 		}
 		
 		public function checkIfBlockIsDown():void 
 		{
-			
+			if (_blockView.y > 400) {
+				facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
+			}
 		}
 		
 	}

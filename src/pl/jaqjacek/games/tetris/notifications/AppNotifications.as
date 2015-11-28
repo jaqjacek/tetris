@@ -33,6 +33,8 @@ package pl.jaqjacek.games.tetris.notifications
 		static public const PAUSE_TIMER:String = "pauseTimer";
 		static public const UNPAUSE_TIMER:String = "unpauseTimer";
 		static public const TIMER_TICK:String = "timerTick";
+		static public const SHOW_BOARD:String = "showBoard";
+		static public const HIDE_BOARD:String = "hideBoard";
 	}
 
 }

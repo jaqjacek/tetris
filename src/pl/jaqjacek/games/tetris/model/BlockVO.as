@@ -9,14 +9,28 @@ package pl.jaqjacek.games.tetris.model
 		public var blockWidth:int;
 		public var blockHeight:int;
 		public var blockColor:int;
-		public var blockString:String;
+		public var blockStrings:Array;
+		private var _currentBlockIndex:int
 		private var _vectorBlock:Vector.<Vector.<int>>;
 		
-		public function BlockVO(p_blockColor:int=0,p_blockString:String="1") 
+		public function BlockVO(p_blockColor:int=0,...rest) 
 		{
 			blockColor = p_blockColor;
-			blockString = p_blockString;
-			setFromString(p_blockString);
+			blockStrings = rest;
+			_currentBlockIndex = 0;
+			setFromString(getStringRepresentation());
+		}
+		
+		public function goToNextFormation():void 
+		{
+			_currentBlockIndex++;
+			_currentBlockIndex = _currentBlockIndex >= blockStrings.length ? 0: _currentBlockIndex;
+			setFromString(getStringRepresentation());
+		}
+		
+		public function getStringRepresentation():String 
+		{
+			return blockStrings[_currentBlockIndex];
 		}
 		
 		public function setFromString(p_blockString:String):void 
@@ -30,14 +44,7 @@ package pl.jaqjacek.games.tetris.model
 			}
 			//set max block height
 			blockWidth = stringArray.length;
-			for (var i:int = 0; i < blockWidth; i++) 
-			{
-				_vectorBlock[i] = new Vector.<int>();
-				for (var l:int = 0; l < blockHeight; l++) 
-				{
-					_vectorBlock[i][l] = 0;
-				}
-			}
+			createBlockSlots();
 			for (var k:int = 0; k < blockWidth; k++) 
 			{
 				var tmpString:String = stringArray.shift();
@@ -50,6 +57,18 @@ package pl.jaqjacek.games.tetris.model
 					}
 				}
 				
+			}
+		}
+		
+		public function createBlockSlots():void 
+		{
+			for (var i:int = 0; i < blockWidth; i++) 
+			{
+				_vectorBlock[i] = new Vector.<int>();
+				for (var l:int = 0; l < blockHeight; l++) 
+				{
+					_vectorBlock[i][l] = 0;
+				}
 			}
 		}
 		

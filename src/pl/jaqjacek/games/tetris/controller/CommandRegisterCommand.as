@@ -6,6 +6,8 @@ package pl.jaqjacek.games.tetris.controller
 	import pl.jaqjacek.games.tetris.controller.blocks.UpdateNextBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.debug.SetDebugBlockMediatorCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveAfterTickCommand;
+	import pl.jaqjacek.games.tetris.controller.moving.StartMovingUpCommand;
+	import pl.jaqjacek.games.tetris.controller.moving.StopMovingUpCommand;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	import pl.jaqjacek.games.tetris.notifications.debug.DebugNotifications;
 	
@@ -35,6 +37,8 @@ package pl.jaqjacek.games.tetris.controller
 			facade.registerCommand(AppNotifications.TIMER_TICK, MoveAfterTickCommand);
 			
 			//kayboard controler
+			facade.registerCommand(AppNotifications.START_SPEEDING_UP, StartMovingUpCommand);
+			facade.registerCommand(AppNotifications.STOP_SPEEDING_UP, StopMovingUpCommand);
 		}
 		
 	}

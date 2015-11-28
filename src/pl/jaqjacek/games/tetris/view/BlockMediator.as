@@ -69,7 +69,6 @@ package pl.jaqjacek.games.tetris.view
 				mediatorName+AppNotifications.SHOW_BLOCK,
 				mediatorName+AppNotifications.UPDATE_BLOCK,
 				mediatorName+AppNotifications.REMOVE_BLOCK,
-				mediatorName+AppNotifications.ROTATE_BLOCK
 			];
 		}
 		
