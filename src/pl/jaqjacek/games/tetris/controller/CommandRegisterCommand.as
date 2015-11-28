@@ -4,13 +4,11 @@ package pl.jaqjacek.games.tetris.controller
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.tetris.controller.blocks.MoveNextBlockToCurrentBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.blocks.UpdateNextBlockCommand;
-	import pl.jaqjacek.games.tetris.controller.debug.SetDebugBlockMediatorCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveAfterTickCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StartMovingUpCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StopMovingUpCommand;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
-	import pl.jaqjacek.games.tetris.notifications.debug.DebugNotifications;
 	
 	/**
 	 * ...
@@ -27,9 +25,6 @@ package pl.jaqjacek.games.tetris.controller
 		override public function execute(notification:INotification):void 
 		{
 			trace( "CommandRegisterCommand.execute > notification : " + notification );
-			//debug
-			facade.registerCommand(DebugNotifications.STARTUP, SetDebugBlockMediatorCommand);
-			
 			
 			//standard events
 			facade.registerCommand(AppNotifications.NEXT_BLOCK_UPDATE, UpdateNextBlockCommand);

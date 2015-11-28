@@ -4,7 +4,6 @@ package pl.jaqjacek.games.tetris.controller
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.tetris.view.BoardMediator;
 	import pl.jaqjacek.games.tetris.view.CurrentBlockMediator;
-	import pl.jaqjacek.games.tetris.view.debug.DebugBlockMediator;
 	import pl.jaqjacek.games.tetris.view.NextBlockMediator;
 	
 	/**
@@ -21,7 +20,6 @@ package pl.jaqjacek.games.tetris.controller
 		
 		override public function execute(notification:INotification):void 
 		{
-			facade.registerMediator(new DebugBlockMediator("debug_block_mediator_", notification.getBody()));
 			facade.registerMediator(new NextBlockMediator(notification.getBody()));
 			facade.registerMediator(new CurrentBlockMediator(notification.getBody()));
 			facade.registerMediator(new BoardMediator(notification.getBody()));

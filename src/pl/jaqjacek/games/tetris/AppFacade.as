@@ -26,8 +26,6 @@ package pl.jaqjacek.games.tetris
 		public function startup(mainMc:Sprite):void
 		{
 			this.sendNotification(AppNotifications.STARTUP, mainMc);
-			//for debug only
-			this.sendNotification("startup_debug");
 			this.sendNotification(AppNotifications.START_GAME);
 		}
 		

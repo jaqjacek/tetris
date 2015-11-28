@@ -1,6 +1,6 @@
-<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="blocks" itemID="56560df2-00000206" linkageExportForAS="true" linkageClassName="pl.jaqjacek.games.tetris.media.Block" lastModified="1448480369">
+<DOMSymbolItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ns.adobe.com/xfl/2008/" name="blocks" itemID="56560df2-00000206" linkageExportForAS="true" linkageClassName="pl.jaqjacek.games.tetris.media.Block" lastModified="1448709778">
   <timeline>
-    <DOMTimeline name="blocks" currentFrame="6">
+    <DOMTimeline name="blocks" currentFrame="7">
       <layers>
         <DOMLayer name="block_blue.png" color="#4FFF4F" current="true" isSelected="true" autoNamed="false">
           <frames>
@@ -36,7 +36,30 @@
             </DOMFrame>
             <DOMFrame index="6" keyMode="9728">
               <elements>
-                <DOMBitmapInstance libraryItemName="block_yellow.png"/>
+                <DOMBitmapInstance selected="true" libraryItemName="block_yellow.png"/>
+              </elements>
+            </DOMFrame>
+            <DOMFrame index="7" keyMode="9728">
+              <elements>
+                <DOMShape>
+                  <fills>
+                    <FillStyle index="1">
+                      <SolidColor alpha="0.00392156862745098"/>
+                    </FillStyle>
+                  </fills>
+                  <strokes>
+                    <StrokeStyle index="1">
+                      <SolidStroke scaleMode="normal">
+                        <fill>
+                          <SolidColor color="#003300" alpha="0.207843137254902"/>
+                        </fill>
+                      </SolidStroke>
+                    </StrokeStyle>
+                  </strokes>
+                  <edges>
+                    <Edge fillStyle1="1" strokeStyle="1" edges="!320 0S6|320 320!320 320|0 320!0 320|0 0!0 0|320 0"/>
+                  </edges>
+                </DOMShape>
               </elements>
             </DOMFrame>
           </frames>

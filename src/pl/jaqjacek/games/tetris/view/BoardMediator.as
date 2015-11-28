@@ -28,7 +28,7 @@ package pl.jaqjacek.games.tetris.view
 		override public function onRegister():void 
 		{
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
-			_boardBlock = new BoardBlockVO(2, proxy.gameBoardWidth, proxy.gameBoardHeight);
+			_boardBlock = new BoardBlockVO(8, proxy.gameBoardWidth, proxy.gameBoardHeight);
 			_boardView = new BoardView();
 		}
 		
