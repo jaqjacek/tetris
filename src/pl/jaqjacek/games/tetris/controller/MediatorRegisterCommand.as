@@ -5,6 +5,7 @@ package pl.jaqjacek.games.tetris.controller
 	import pl.jaqjacek.games.tetris.view.BoardMediator;
 	import pl.jaqjacek.games.tetris.view.CurrentBlockMediator;
 	import pl.jaqjacek.games.tetris.view.NextBlockMediator;
+	import pl.jaqjacek.games.tetris.view.PointsMediator;
 	
 	/**
 	 * ...
@@ -25,6 +26,7 @@ package pl.jaqjacek.games.tetris.controller
 			facade.registerMediator(new BoardMediator(notification.getBody()));
 			facade.registerMediator(new KeyboardControllerMediator(notification.getBody()));
 			facade.registerMediator(new TimeControlerMediator(notification.getBody()));
+			facade.registerMediator(new PointsMediator(notification.getBody()));
 		}
 		
 	}

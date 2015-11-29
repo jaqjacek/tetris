@@ -46,6 +46,10 @@ package pl.jaqjacek.games.tetris.notifications
 		static public const BOARD_SPLICE_LINE:String = "boardSpliceLine";
 		static public const CHECK_END_OF_GAME:String = "checkEndOfGame";
 		static public const END_GAME:String = "endGame";
+		
+		//points
+		static public const ADD_POINTS:String = "addPoints";
+		static public const RESET_POINTS:String = "resetPoints";
 	}
 
 }
