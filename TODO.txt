@@ -23,7 +23,8 @@
 - chacking rotation of block neer asambled block on screen
 - HUD with time, points, current level 
 - change falling block speed according to its level
-0.8
+-------------------------------- 15h of work until this line 
+0.8 
 - start screen
 - game over screen
 - buttons
