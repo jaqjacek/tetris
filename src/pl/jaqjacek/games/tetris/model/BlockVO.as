@@ -14,7 +14,7 @@ package pl.jaqjacek.games.tetris.model
 		public var currentBlockIndex:int
 		protected var _vectorBlock:Vector.<Vector.<int>>;
 		private var _blockParts:Vector.<Point>;
-		static public const EMPTY_COLOR:int =8;
+		static public const EMPTY_COLOR:int = 8;
 		
 		public function BlockVO(p_blockColor:int=0,...rest) 
 		{
@@ -93,6 +93,19 @@ package pl.jaqjacek.games.tetris.model
 			}
 			return true;
 		}
+		
+		public function isEmptyColumn(columnIndex:int):Boolean
+		{
+			for (var i:int = 0; i < this.blockHeight; i++) 
+			{
+				if (getBlockAt(columnIndex,i)) {
+					return false;
+				}
+			}
+			return true;
+		}
+		
+		
 		
 		public function createBlockSlots():void 
 		{

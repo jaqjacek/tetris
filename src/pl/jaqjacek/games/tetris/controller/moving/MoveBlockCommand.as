@@ -31,8 +31,22 @@ package pl.jaqjacek.games.tetris.controller.moving
 			var side:int = notification.getBody() as int;
 			var notifiCationToSend:String = CurrentBlockMediator.NAME + AppNotifications.MOVE_BLOCK;
 			
+			//cauculated if can move outside left side of border
+			var leftEmptyColumns:int = 0;
+			for (var i:int = 0; i < blockProxy.curentBlock.blockWidth; i++) 
+			{
+				if (blockProxy.curentBlock.isEmptyColumn(i)) {
+					leftEmptyColumns++;
+				}
+				else {
+					break;
+				}
+			}
+			
 			//check moving outside board
-			if (proxy.currentBlockBlockPositionX + side < 0 || proxy.currentBlockBlockPositionX + side+blockProxy.curentBlock.blockWidth > proxy.gameBoardWidth) {
+			
+			trace( "leftEmptyColumns : " + leftEmptyColumns );
+			if (proxy.currentBlockBlockPositionX + side < -leftEmptyColumns || proxy.currentBlockBlockPositionX + side+blockProxy.curentBlock.blockWidth > proxy.gameBoardWidth) {
 				notifiCationToSend = AppNotifications.CANT_MOVE_BLOCK;
 			}
 			else

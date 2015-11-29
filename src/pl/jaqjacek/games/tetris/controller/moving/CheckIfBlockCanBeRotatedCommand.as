@@ -52,6 +52,7 @@ package pl.jaqjacek.games.tetris.controller.moving
 			{
 				facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.ROTATE_BLOCK);
 			}
+			clonedBlock.clean();
 		}
 		
 	}
