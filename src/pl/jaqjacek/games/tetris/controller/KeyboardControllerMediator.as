@@ -34,7 +34,7 @@ package pl.jaqjacek.games.tetris.controller
 		{
 			switch(e.keyCode) {
 				case Keyboard.UP:
-					facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.ROTATE_BLOCK);
+					facade.sendNotification(AppNotifications.CHECK_BLOCK_ROTATION);
 				break;
 				case Keyboard.DOWN:
 					_dwonArrowPressed = false;

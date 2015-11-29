@@ -11,7 +11,7 @@ package pl.jaqjacek.games.tetris.model
 		public var blockHeight:int;
 		public var blockColor:int;
 		public var blockStrings:Array;
-		protected var _currentBlockIndex:int
+		public var currentBlockIndex:int
 		protected var _vectorBlock:Vector.<Vector.<int>>;
 		private var _blockParts:Vector.<Point>;
 		static public const EMPTY_COLOR:int =8;
@@ -25,7 +25,7 @@ package pl.jaqjacek.games.tetris.model
 		
 		public function reset():void 
 		{
-			_currentBlockIndex = 0;
+			currentBlockIndex = 0;
 			setFromString(getStringRepresentation());
 		}
 		
@@ -37,14 +37,23 @@ package pl.jaqjacek.games.tetris.model
 		
 		public function goToNextFormation():void 
 		{
-			_currentBlockIndex++;
-			_currentBlockIndex = _currentBlockIndex >= blockStrings.length ? 0: _currentBlockIndex;
+			currentBlockIndex++;
+			currentBlockIndex = currentBlockIndex >= blockStrings.length ? 0: currentBlockIndex;
 			setFromString(getStringRepresentation());
+		}
+		
+		//TODO move to better place
+		public function cloneBlock():BlockVO
+		{
+			var tmpBlock:BlockVO = new BlockVO(this.blockColor, '');
+			tmpBlock.currentBlockIndex = this.currentBlockIndex;
+			tmpBlock.blockStrings = blockStrings;
+			return tmpBlock;
 		}
 		
 		public function getStringRepresentation():String 
 		{
-			return blockStrings[_currentBlockIndex];
+			return blockStrings[currentBlockIndex];
 		}
 		
 		public function setFromString(p_blockString:String):void 
@@ -100,6 +109,16 @@ package pl.jaqjacek.games.tetris.model
 		public function getBlockAt(x:int,y:int):int
 		{
 			return _vectorBlock[x][y];
+		}
+		
+		public function clean():void 
+		{
+			_blockParts = null;
+			for (var i:int = 0; i < _vectorBlock.length; i++) 
+			{
+				_vectorBlock[i] = null;
+			}
+			_blockParts = null;
 		}
 		
 		public function get blockParts():Vector.<Point> 

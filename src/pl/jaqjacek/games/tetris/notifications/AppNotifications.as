@@ -21,6 +21,7 @@ package pl.jaqjacek.games.tetris.notifications
 		static public const MOVE_BLOCK:String = "moveBlock"
 		static public const MOVE_BLOCK_DOWN:String = "moveBlockDown";
 		static public const ROTATE_BLOCK:String = "rotateBlock";
+		static public const CHECK_BLOCK_ROTATION:String = "checkBlockRotation";
 		
 		
 		

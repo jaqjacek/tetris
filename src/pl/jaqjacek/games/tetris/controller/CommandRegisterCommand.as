@@ -9,6 +9,7 @@ package pl.jaqjacek.games.tetris.controller
 	import pl.jaqjacek.games.tetris.controller.board.CheckFullLinesOnBoardCommand;
 	import pl.jaqjacek.games.tetris.controller.board.SpliceLineFromBoardCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.CheckEndOfGameCommand;
+	import pl.jaqjacek.games.tetris.controller.moving.CheckIfBlockCanBeRotatedCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveAfterTickCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StartMovingUpCommand;
@@ -41,6 +42,7 @@ package pl.jaqjacek.games.tetris.controller
 			//moving block
 
 			facade.registerCommand(AppNotifications.MOVE_BLOCK, MoveBlockCommand);
+			facade.registerCommand(AppNotifications.CHECK_BLOCK_ROTATION, CheckIfBlockCanBeRotatedCommand);
 			
 			//board
 			facade.registerCommand(AppNotifications.ADD_BLOCK_TO_BOARD, AddBlockToBoardCommand);
