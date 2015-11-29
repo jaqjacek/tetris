@@ -22,6 +22,7 @@ package pl.jaqjacek.games.tetris.controller.blocks
 		{
 			var proxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
 			proxy.nextBlock = proxy.getRandomBlock();
+			proxy.nextBlock.reset();
 			facade.sendNotification(NextBlockMediator.NAME+AppNotifications.SHOW_BLOCK);
 			facade.sendNotification(NextBlockMediator.NAME+AppNotifications.UPDATE_BLOCK,proxy.nextBlock);
 		}

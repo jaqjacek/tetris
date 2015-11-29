@@ -20,6 +20,11 @@ package pl.jaqjacek.games.tetris.model
 		{
 			blockColor = p_blockColor;
 			blockStrings = rest;
+			reset();
+		}
+		
+		public function reset():void 
+		{
 			_currentBlockIndex = 0;
 			setFromString(getStringRepresentation());
 		}
