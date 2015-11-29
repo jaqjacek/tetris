@@ -58,6 +58,10 @@ package pl.jaqjacek.games.tetris.view
 				case mediatorName+AppNotifications.MOVE_BLOCK_DOWN:
 					directionY = nBody as Number;
 					this._blockView.y += directionY;
+					trace( "this._blockView.y % paramsProxy.currentBlockBlockPositionY : " + this._blockView.y % paramsProxy.currentBlockBlockPositionY );
+					if (this._blockView.y - (paramsProxy.currentBlockBlockPositionY *paramsProxy.gameBlockSize) >= 1) {
+						paramsProxy.currentBlockBlockPositionY++;
+					}
 					checkIfBlockIsDown();
 				break;
 				
@@ -73,7 +77,7 @@ package pl.jaqjacek.games.tetris.view
 			super.setBlock(block);
 			trace(block, _blockView, paramsProxy);
 			_blockView.x = paramsProxy.getCurrentBlockViewX();
-			_blockView.y = paramsProxy.gameBoardViewStartY+paramsProxy.gameBlockSize;
+			_blockView.y = paramsProxy.getCurrentBlockViewY();
 		}
 		
 		public function rotateBlock():void 
@@ -84,7 +88,7 @@ package pl.jaqjacek.games.tetris.view
 		
 		public function checkIfBlockIsDown():void 
 		{
-			if (_blockView.y > 200) {
+			if (paramsProxy.currentBlockBlockPositionY > 3) {
 				var boardBlock:BoardBlockVO = (facade.retrieveMediator(BoardMediator.NAME) as BoardMediator).boardBlock;
 				var blockToBoard:BlockToBoardVO = new BlockToBoardVO(boardBlock, _block, paramsProxy.currentBlockBlockPositionX, paramsProxy.currentBlockBlockPositionY)
 				trace( "currentBlockBlockPositionX : " +blockToBoard.blockX);

@@ -45,12 +45,17 @@ package pl.jaqjacek.games.tetris.model
 		public function resetCurrentBlockPosition():void 
 		{
 			currentBlockBlockPositionX = Math.floor(gameBoardWidth / 2);
-			currentBlockBlockPositionY = Math.floor(gameBoardHeight / 2);
+			currentBlockBlockPositionY = 0;
 		}
 		
 		public function getCurrentBlockViewX():Number
 		{
 			return currentBlockBlockPositionX * gameBlockSize + gameBoardViewStartX;
+		}
+		
+		public function getCurrentBlockViewY():Number
+		{
+			return currentBlockBlockPositionY * gameBlockSize + gameBoardViewStartY;
 		}
 		
 		public function getMoveDownDistance():Number

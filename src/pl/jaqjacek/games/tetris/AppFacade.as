@@ -32,7 +32,7 @@ package pl.jaqjacek.games.tetris
 		override public function sendNotification(notificationName:String, body:Object = null, type:String = null):void 
 		{
 			//don't show timer tick sending event
-			if(notificationName.indexOf("timerTick") == -1) {
+			if(notificationName.indexOf("timerTick") == -1 && notificationName.indexOf("moveBlockDown") == -1 ){
 				trace(this, notificationName, body, type);
 			}
 			super.sendNotification(notificationName, body, type);
