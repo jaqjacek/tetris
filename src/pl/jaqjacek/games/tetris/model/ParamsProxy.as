@@ -33,9 +33,9 @@ package pl.jaqjacek.games.tetris.model
 			currentSpeedDown = 5;
 			speedMultiplayer = 1;
 			currentLevel = 1;
-			nextTickInc = 4;
+			nextTickInc = 2;
 			gameBoardWidth = 16;
-			gameBoardHeight = 10;
+			gameBoardHeight = 15;
 			gameBlockSize = 20;
 			gameBoardViewStartX = 200;
 			gameBoardViewStartY = 0;

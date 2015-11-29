@@ -25,20 +25,16 @@ package pl.jaqjacek.games.tetris.controller.board
 			var tmpX:int;
 			var tmpY:int;
 			//CurrentBlockY should by -- //TODO fix this not nice way
-			blockToBoard.blockY--;
 			
-			for (var i:int = 0; i < blockToBoard.block.blockWidth; i++) 
+			for each (var part:Point in blockToBoard.block.blockParts) 
 			{
-				for (var j:int = 0; j < blockToBoard.block.blockHeight; j++) 
-				{
-					addColor =  blockToBoard.block.getBlockAt(i, j) * blockToBoard.block.blockColor;
-					if (addColor) {
-						tmpX = blockToBoard.blockX + i;
-						tmpY = blockToBoard.blockY + j;
+				addColor =  blockToBoard.block.getBlockAt(part.x, part.y) * blockToBoard.block.blockColor;
+				if (addColor) {
+					tmpX = blockToBoard.lastX + part.x;
+					tmpY = blockToBoard.lastY + part.y;
 
-						blockToBoard.board.setBlockAt(tmpX, tmpY, addColor);
-						facade.sendNotification(AppNotifications.UPDATE_BOARD_VIEW, new Point(tmpX, tmpY));
-					}
+					blockToBoard.board.setBlockAt(tmpX, tmpY, addColor);
+					facade.sendNotification(AppNotifications.UPDATE_BOARD_VIEW, new Point(tmpX, tmpY));
 				}
 			}
 		}

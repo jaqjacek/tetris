@@ -27,7 +27,6 @@ package pl.jaqjacek.games.tetris.model
 			super.onRegister();
 			_blocks = new Vector.<BlockVO>();
 			initBlockList();
-			trace(' register BlockProxy ');
 		}
 		
 		public function initBlockList():void 

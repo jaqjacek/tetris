@@ -25,16 +25,20 @@ package pl.jaqjacek.games.tetris.controller.board
 			var paramsProxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
 			var addColor:int;
 			var addBlock:Boolean = false;
-			var partY:int
+			var partY:int;
+			var partX:int;
+
 			for each (var part:Point in blockToBoard.block.blockParts) 
 			{
-				partY = blockToBoard.blockY + part.y;
+				partY = blockToBoard.currentY + part.y;
+				partX = blockToBoard.currentX + part.x;
+
 				if (partY >= paramsProxy.gameBoardHeight) {
 					addBlock = true;
 					break;
 				}
 				
-				if (blockToBoard.board.getBlockAt(blockToBoard.blockX + part.x, partY)) {
+				if (blockToBoard.board.getBlockAt(partX, partY)) {
 					addBlock = true;
 					break
 				}

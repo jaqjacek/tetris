@@ -47,21 +47,21 @@ package pl.jaqjacek.games.tetris.view
 			var directionX:int;
 			var directionY:Number;
 			var currentTick:int;
+			var lastY:int;
 			switch (nName) 
 			{
 				case mediatorName+AppNotifications.MOVE_BLOCK:
-					//directionX = nBody as int
+					directionX = nBody as int
 					this._blockView.x = paramsProxy.getCurrentBlockViewX();
-					
 				break;
 				
 				case mediatorName+AppNotifications.MOVE_BLOCK_DOWN:
 					directionY = nBody as Number;
+					lastY = paramsProxy.currentBlockBlockPositionY;
 					this._blockView.y += directionY;
-					trace( "this._blockView.y % paramsProxy.currentBlockBlockPositionY : " + this._blockView.y % paramsProxy.currentBlockBlockPositionY );
 					if (this._blockView.y - (paramsProxy.currentBlockBlockPositionY *paramsProxy.gameBlockSize) >= 1) {
 						paramsProxy.currentBlockBlockPositionY++;
-						checkIfBlockIsDown();
+						checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
 					}
 				break;
 				
@@ -86,21 +86,11 @@ package pl.jaqjacek.games.tetris.view
 			super.setBlock(_block);
 		}
 		
-		public function checkIfBlockIsDown():void 
+		public function checkBlockToBoard(lastX:int,lastY:int):void 
 		{
 			var boardBlock:BoardBlockVO = (facade.retrieveMediator(BoardMediator.NAME) as BoardMediator).boardBlock;
-			var blockToBoard:BlockToBoardVO = new BlockToBoardVO(boardBlock, _block, paramsProxy.currentBlockBlockPositionX, paramsProxy.currentBlockBlockPositionY)
+			var blockToBoard:BlockToBoardVO = new BlockToBoardVO(boardBlock, _block, paramsProxy.currentBlockBlockPositionX, paramsProxy.currentBlockBlockPositionY,lastX,lastY)
 			facade.sendNotification(AppNotifications.CHECK_ADD_BLOCK_TO_BOARD, blockToBoard);
-			//var shouldAddBlockToBoard:Boolean = false;
-			//if (paramsProxy.currentBlockBlockPositionY + _block.blockHeight >= paramsProxy.gameBoardHeight ) {
-				//paramsProxy.currentBlockBlockPositionY = paramsProxy.gameBoardHeight - _block.blockHeight;
-				//shouldAddBlockToBoard = true;
-			//}
-			//if (shouldAddBlockToBoard) {
-//
-				//facade.sendNotification(AppNotifications.ADD_BLOCK_TO_BOARD,blockToBoard);
-				//facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
-			//}
 		}
 		
 	}

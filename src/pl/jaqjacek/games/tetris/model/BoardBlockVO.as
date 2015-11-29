@@ -17,13 +17,13 @@ package pl.jaqjacek.games.tetris.model
 		
 		override public function setFromString(p_blockString:String):void 
 		{
+			trace( "BoardBlockVO.setFromString > p_blockString : " + p_blockString );
 			initVectorBlock();
 			createBlockSlots();
 		}
 		
 		public function setBlockAt(x:int,y:int,blockColor:int):void 
 		{
-			trace( "BoardBlockVO.setBlockAt > x : " + x + ", y : " + y + ", blockColor : " + blockColor );
 			_vectorBlock[x][y] = blockColor;
 		}
 		
