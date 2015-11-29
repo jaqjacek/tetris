@@ -17,6 +17,7 @@ package pl.jaqjacek.games.tetris.view
 		private var _nextTickInc:int;
 		private var _currentSpeed:Number;
 		private var paramsProxy:ParamsProxy;
+		private var nextViewY:Number;
 		
 		public function CurrentBlockMediator(viewComponent:Object=null) 
 		{
@@ -36,6 +37,7 @@ package pl.jaqjacek.games.tetris.view
 			listNotifications.push(mediatorName+AppNotifications.ROTATE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK_DOWN);
+			listNotifications.push(AppNotifications.ADD_BLOCK_TO_BOARD);
 			return listNotifications;
 		}
 		
@@ -58,11 +60,17 @@ package pl.jaqjacek.games.tetris.view
 				case mediatorName+AppNotifications.MOVE_BLOCK_DOWN:
 					directionY = nBody as Number;
 					lastY = paramsProxy.currentBlockBlockPositionY;
-					this._blockView.y += directionY;
-					if (this._blockView.y - (paramsProxy.currentBlockBlockPositionY *paramsProxy.gameBlockSize) >= 1) {
+					nextViewY = this._blockView.y + directionY;
+					if (nextViewY - (paramsProxy.currentBlockBlockPositionY *paramsProxy.gameBlockSize) >= 1) {
 						paramsProxy.currentBlockBlockPositionY++;
 						checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
 					}
+					this._blockView.y = nextViewY
+					
+				break;
+				
+				case AppNotifications.ADD_BLOCK_TO_BOARD:
+					nextViewY = 0;
 				break;
 				
 				case mediatorName+AppNotifications.ROTATE_BLOCK:
