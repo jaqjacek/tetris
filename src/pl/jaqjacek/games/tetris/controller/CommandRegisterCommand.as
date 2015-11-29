@@ -4,6 +4,7 @@ package pl.jaqjacek.games.tetris.controller
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.tetris.controller.blocks.MoveNextBlockToCurrentBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.blocks.UpdateNextBlockCommand;
+	import pl.jaqjacek.games.tetris.controller.board.AddBlockToBoardCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveAfterTickCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StartMovingUpCommand;
@@ -39,6 +40,9 @@ package pl.jaqjacek.games.tetris.controller
 			//moving block
 
 			facade.registerCommand(AppNotifications.MOVE_BLOCK, MoveBlockCommand);
+			
+			//board
+			facade.registerCommand(AppNotifications.ADD_BLOCK_TO_BOARD, AddBlockToBoardCommand);
 		}
 		
 	}

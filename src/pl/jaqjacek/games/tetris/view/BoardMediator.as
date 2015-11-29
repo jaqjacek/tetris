@@ -2,6 +2,7 @@ package pl.jaqjacek.games.tetris.view
 {
 	import flash.display.MovieClip;
 	import flash.display.Sprite;
+	import flash.geom.Point;
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.tetris.model.BlockProxy;
@@ -36,6 +37,7 @@ package pl.jaqjacek.games.tetris.view
 		{
 			return [
 				AppNotifications.SHOW_BOARD,
+				AppNotifications.UPDATE_BOARD_VIEW,
 				AppNotifications.HIDE_BOARD
 			];
 		}
@@ -44,7 +46,7 @@ package pl.jaqjacek.games.tetris.view
 		{
 			var nName:String = notification.getName();
 			var nBody:Object = notification.getBody();
-			
+			var updatePoint:Point
 			switch (nName) 
 			{
 				case AppNotifications.SHOW_BOARD:
@@ -53,6 +55,12 @@ package pl.jaqjacek.games.tetris.view
 				break;
 				case AppNotifications.HIDE_BOARD:
 					Sprite(viewComponent).addChild(_boardView);
+				break;
+				case AppNotifications.UPDATE_BOARD_VIEW:
+					updatePoint = nBody as Point;
+					if(updatePoint != null) {
+						_boardView.getBlockAt(updatePoint.x, updatePoint.y).gotoAndStop(_boardBlock.getBlockAt(updatePoint.x, updatePoint.y));
+					}
 				break;
 				
 				default:
@@ -81,6 +89,11 @@ package pl.jaqjacek.games.tetris.view
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
 			block.width = block.height = proxy.gameBlockSize;
 			_boardView.createBlockAt(x,y,block);
+		}
+		
+		public function get boardBlock():BoardBlockVO 
+		{
+			return _boardBlock;
 		}
 		
 	}

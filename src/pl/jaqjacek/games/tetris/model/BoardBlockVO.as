@@ -12,11 +12,19 @@ package pl.jaqjacek.games.tetris.model
 			super(p_blockColor);
 			blockHeight = p_blockHeight;
 			blockWidth = p_blockWidth;
+			setFromString('');
 		}
 		
 		override public function setFromString(p_blockString:String):void 
 		{
+			initVectorBlock();
 			createBlockSlots();
+		}
+		
+		public function setBlockAt(x:int,y:int,blockColor:int):void 
+		{
+			trace( "BoardBlockVO.setBlockAt > x : " + x + ", y : " + y + ", blockColor : " + blockColor );
+			_vectorBlock[x][y] = blockColor;
 		}
 		
 	}

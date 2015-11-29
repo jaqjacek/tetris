@@ -1,7 +1,9 @@
 package pl.jaqjacek.games.tetris.view 
 {
 	import org.puremvc.as3.interfaces.INotification;
+	import pl.jaqjacek.games.tetris.model.BlockToBoardVO;
 	import pl.jaqjacek.games.tetris.model.BlockVO;
+	import pl.jaqjacek.games.tetris.model.BoardBlockVO;
 	import pl.jaqjacek.games.tetris.model.ParamsProxy;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	/**
@@ -82,7 +84,13 @@ package pl.jaqjacek.games.tetris.view
 		
 		public function checkIfBlockIsDown():void 
 		{
-			if (_blockView.y > 400) {
+			if (_blockView.y > 200) {
+				var boardBlock:BoardBlockVO = (facade.retrieveMediator(BoardMediator.NAME) as BoardMediator).boardBlock;
+				var blockToBoard:BlockToBoardVO = new BlockToBoardVO(boardBlock, _block, paramsProxy.currentBlockBlockPositionX, paramsProxy.currentBlockBlockPositionY)
+				trace( "currentBlockBlockPositionX : " +blockToBoard.blockX);
+				trace( "currentBlockBlockPositionY : " +blockToBoard.blockY );
+
+				facade.sendNotification(AppNotifications.ADD_BLOCK_TO_BOARD,blockToBoard);
 				facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
 			}
 		}

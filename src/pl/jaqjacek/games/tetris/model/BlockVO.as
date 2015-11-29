@@ -10,8 +10,8 @@ package pl.jaqjacek.games.tetris.model
 		public var blockHeight:int;
 		public var blockColor:int;
 		public var blockStrings:Array;
-		private var _currentBlockIndex:int
-		private var _vectorBlock:Vector.<Vector.<int>>;
+		protected var _currentBlockIndex:int
+		protected var _vectorBlock:Vector.<Vector.<int>>;
 		
 		public function BlockVO(p_blockColor:int=0,...rest) 
 		{
@@ -19,6 +19,11 @@ package pl.jaqjacek.games.tetris.model
 			blockStrings = rest;
 			_currentBlockIndex = 0;
 			setFromString(getStringRepresentation());
+		}
+		
+		public function initVectorBlock():void 
+		{
+			_vectorBlock = new Vector.<Vector.<int>>();
 		}
 		
 		public function goToNextFormation():void 
@@ -35,7 +40,7 @@ package pl.jaqjacek.games.tetris.model
 		
 		public function setFromString(p_blockString:String):void 
 		{
-			_vectorBlock = new Vector.<Vector.<int>>();
+			initVectorBlock();
 			//set max block width
 			var stringArray:Array = p_blockString.split("|");
 			for (var kk:int = 0; kk < stringArray.length; kk++) 
