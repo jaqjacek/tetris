@@ -23,6 +23,7 @@ package pl.jaqjacek.games.tetris.controller.board
 		override public function execute(notification:INotification):void 
 		{
 			var board:BoardBlockVO = notification.getBody() as BoardBlockVO;
+			var destroyedLinesAmmount:int = 0;
 			for (var i:int = board.blockHeight-1; i >=0 ; i--) 
 			{
 				if (board.isRowFull(i) )
@@ -34,8 +35,10 @@ package pl.jaqjacek.games.tetris.controller.board
 					}
 					facade.sendNotification(AppNotifications.BOARD_SPLICE_LINE, new BoardSpliceVO(board,i));
 					i++;
+					destroyedLinesAmmount++;
 				}
 			}
+			facade.sendNotification(AppNotifications.ADD_POINTS, destroyedLinesAmmount);
 		}
 		
 	}

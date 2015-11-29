@@ -14,6 +14,7 @@ package pl.jaqjacek.games.tetris.controller
 	import pl.jaqjacek.games.tetris.controller.moving.MoveBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StartMovingUpCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StopMovingUpCommand;
+	import pl.jaqjacek.games.tetris.controller.points.LinesToPointsCauculatorCommand;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	
 	/**
@@ -50,6 +51,7 @@ package pl.jaqjacek.games.tetris.controller
 			facade.registerCommand(AppNotifications.CHECK_FULL_LINES_ON_BOARD, CheckFullLinesOnBoardCommand);
 			facade.registerCommand(AppNotifications.BOARD_SPLICE_LINE, SpliceLineFromBoardCommand);
 			facade.registerCommand(AppNotifications.CHECK_END_OF_GAME, CheckEndOfGameCommand);
+			facade.registerCommand(AppNotifications.DESTROYED_LINES_AMOUNT, LinesToPointsCauculatorCommand);
 			
 			//game
 			facade.registerCommand(AppNotifications.START_GAME, StartGameCommand);
