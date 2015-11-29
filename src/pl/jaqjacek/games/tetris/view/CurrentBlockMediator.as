@@ -61,8 +61,8 @@ package pl.jaqjacek.games.tetris.view
 					trace( "this._blockView.y % paramsProxy.currentBlockBlockPositionY : " + this._blockView.y % paramsProxy.currentBlockBlockPositionY );
 					if (this._blockView.y - (paramsProxy.currentBlockBlockPositionY *paramsProxy.gameBlockSize) >= 1) {
 						paramsProxy.currentBlockBlockPositionY++;
+						checkIfBlockIsDown();
 					}
-					checkIfBlockIsDown();
 				break;
 				
 				case mediatorName+AppNotifications.ROTATE_BLOCK:
@@ -88,20 +88,19 @@ package pl.jaqjacek.games.tetris.view
 		
 		public function checkIfBlockIsDown():void 
 		{
-			var shouldAddBlockToBoard:Boolean = false;
-			if (paramsProxy.currentBlockBlockPositionY + _block.blockHeight >= paramsProxy.gameBoardHeight ) {
-				paramsProxy.currentBlockBlockPositionY = paramsProxy.gameBoardHeight - _block.blockHeight;
-				shouldAddBlockToBoard = true;
-			}
-			if (shouldAddBlockToBoard) {
-				var boardBlock:BoardBlockVO = (facade.retrieveMediator(BoardMediator.NAME) as BoardMediator).boardBlock;
-				var blockToBoard:BlockToBoardVO = new BlockToBoardVO(boardBlock, _block, paramsProxy.currentBlockBlockPositionX, paramsProxy.currentBlockBlockPositionY)
-				trace( "currentBlockBlockPositionX : " +blockToBoard.blockX);
-				trace( "currentBlockBlockPositionY : " +blockToBoard.blockY );
-
-				facade.sendNotification(AppNotifications.ADD_BLOCK_TO_BOARD,blockToBoard);
-				facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
-			}
+			var boardBlock:BoardBlockVO = (facade.retrieveMediator(BoardMediator.NAME) as BoardMediator).boardBlock;
+			var blockToBoard:BlockToBoardVO = new BlockToBoardVO(boardBlock, _block, paramsProxy.currentBlockBlockPositionX, paramsProxy.currentBlockBlockPositionY)
+			facade.sendNotification(AppNotifications.CHECK_ADD_BLOCK_TO_BOARD, blockToBoard);
+			//var shouldAddBlockToBoard:Boolean = false;
+			//if (paramsProxy.currentBlockBlockPositionY + _block.blockHeight >= paramsProxy.gameBoardHeight ) {
+				//paramsProxy.currentBlockBlockPositionY = paramsProxy.gameBoardHeight - _block.blockHeight;
+				//shouldAddBlockToBoard = true;
+			//}
+			//if (shouldAddBlockToBoard) {
+//
+				//facade.sendNotification(AppNotifications.ADD_BLOCK_TO_BOARD,blockToBoard);
+				//facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
+			//}
 		}
 		
 	}

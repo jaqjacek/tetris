@@ -35,7 +35,7 @@ package pl.jaqjacek.games.tetris.model
 			currentLevel = 1;
 			nextTickInc = 4;
 			gameBoardWidth = 16;
-			gameBoardHeight = 30;
+			gameBoardHeight = 10;
 			gameBlockSize = 20;
 			gameBoardViewStartX = 200;
 			gameBoardViewStartY = 0;

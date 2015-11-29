@@ -21,10 +21,12 @@ package pl.jaqjacek.games.tetris.controller.board
 		override public function execute(notification:INotification):void 
 		{
 			var blockToBoard:BlockToBoardVO = notification.getBody() as BlockToBoardVO
-			trace( "BlockToBoardVO : " + BlockToBoardVO );
 			var addColor:int;
 			var tmpX:int;
 			var tmpY:int;
+			//CurrentBlockY should by -- //TODO fix this not nice way
+			blockToBoard.blockY--;
+			
 			for (var i:int = 0; i < blockToBoard.block.blockWidth; i++) 
 			{
 				for (var j:int = 0; j < blockToBoard.block.blockHeight; j++) 

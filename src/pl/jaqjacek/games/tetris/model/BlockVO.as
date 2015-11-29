@@ -1,5 +1,6 @@
 package pl.jaqjacek.games.tetris.model 
 {
+	import flash.geom.Point;
 	/**
 	 * ...
 	 * @author jaq
@@ -12,6 +13,7 @@ package pl.jaqjacek.games.tetris.model
 		public var blockStrings:Array;
 		protected var _currentBlockIndex:int
 		protected var _vectorBlock:Vector.<Vector.<int>>;
+		private var _blockParts:Vector.<Point>;
 		
 		public function BlockVO(p_blockColor:int=0,...rest) 
 		{
@@ -24,6 +26,7 @@ package pl.jaqjacek.games.tetris.model
 		public function initVectorBlock():void 
 		{
 			_vectorBlock = new Vector.<Vector.<int>>();
+			_blockParts = new Vector.<Point>();
 		}
 		
 		public function goToNextFormation():void 
@@ -58,6 +61,7 @@ package pl.jaqjacek.games.tetris.model
 					{
 						if(tmpString.charAt(j) == "1") {
 							_vectorBlock[k][j] = 1;
+							_blockParts.push(new Point(k, j));
 						}
 					}
 				}
@@ -80,6 +84,11 @@ package pl.jaqjacek.games.tetris.model
 		public function getBlockAt(x:int=0,y:int =0 ):int
 		{
 			return _vectorBlock[x][y];
+		}
+		
+		public function get blockParts():Vector.<Point> 
+		{
+			return _blockParts;
 		}
 		
 	}

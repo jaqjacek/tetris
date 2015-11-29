@@ -5,6 +5,7 @@ package pl.jaqjacek.games.tetris.controller
 	import pl.jaqjacek.games.tetris.controller.blocks.MoveNextBlockToCurrentBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.blocks.UpdateNextBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.board.AddBlockToBoardCommand;
+	import pl.jaqjacek.games.tetris.controller.board.CheckAddBlockToBoardCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveAfterTickCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.MoveBlockCommand;
 	import pl.jaqjacek.games.tetris.controller.moving.StartMovingUpCommand;
@@ -43,6 +44,7 @@ package pl.jaqjacek.games.tetris.controller
 			
 			//board
 			facade.registerCommand(AppNotifications.ADD_BLOCK_TO_BOARD, AddBlockToBoardCommand);
+			facade.registerCommand(AppNotifications.CHECK_ADD_BLOCK_TO_BOARD, CheckAddBlockToBoardCommand);
 		}
 		
 	}
