@@ -75,7 +75,6 @@ package pl.jaqjacek.games.tetris.view
 		override public function setBlock(block:BlockVO):void 
 		{
 			super.setBlock(block);
-			trace(block, _blockView, paramsProxy);
 			_blockView.x = paramsProxy.getCurrentBlockViewX();
 			_blockView.y = paramsProxy.getCurrentBlockViewY();
 		}

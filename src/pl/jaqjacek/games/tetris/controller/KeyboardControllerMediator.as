@@ -19,13 +19,11 @@ package pl.jaqjacek.games.tetris.controller
 		public function KeyboardControllerMediator(viewComponent:Object=null) 
 		{
 			super(mediatorName, viewComponent);
-			trace(viewComponent);
 		}
 		
 		override public function onRegister():void 
 		{
 			var mainStage:Sprite = viewComponent as Sprite;
-			trace(mainStage);
 			mainStage.stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDownHandler);
 			mainStage.stage.addEventListener(KeyboardEvent.KEY_UP, keyUpHandler);
 		}

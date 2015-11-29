@@ -33,6 +33,7 @@ package pl.jaqjacek.games.tetris.controller.moving
 			var clonedBlock:BlockVO = blockProxy.curentBlock.cloneBlock();
 			clonedBlock.goToNextFormation();
 			var canRotate:Boolean = true;
+			
 			//check moving outside board
 			if (proxy.currentBlockBlockPositionX < 0 || proxy.currentBlockBlockPositionX + clonedBlock.blockWidth > proxy.gameBoardWidth) {
 				canRotate = false;

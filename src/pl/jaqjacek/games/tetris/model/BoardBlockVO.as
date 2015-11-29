@@ -17,7 +17,6 @@ package pl.jaqjacek.games.tetris.model
 		
 		override public function setFromString(p_blockString:String):void 
 		{
-			trace( "BoardBlockVO.setFromString > p_blockString : " + p_blockString );
 			initVectorBlock();
 			createBlockSlots();
 		}

@@ -18,7 +18,6 @@ package pl.jaqjacek.games.tetris.controller
 		
 		override public function execute(notification:INotification):void 
 		{
-			trace( "StartGameCommand.execute > notification : " + notification );
 			facade.sendNotification(AppNotifications.NEXT_BLOCK_UPDATE);
 			facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
 			facade.sendNotification(AppNotifications.SHOW_BOARD);

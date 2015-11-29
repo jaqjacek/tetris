@@ -124,6 +124,21 @@ package pl.jaqjacek.games.tetris.model
 			return _vectorBlock[x][y];
 		}
 		
+		public function getLeftEmptyColumnsAmount():int 
+		{
+			var leftEmptyColumns:int = 0;
+			for (var i:int = 0; i < blockWidth; i++) 
+			{
+				if (isEmptyColumn(i)) {
+					leftEmptyColumns++;
+				}
+				else {
+					break;
+				}
+			}
+			return leftEmptyColumns;
+		}
+		
 		public function clean():void 
 		{
 			_blockParts = null;
