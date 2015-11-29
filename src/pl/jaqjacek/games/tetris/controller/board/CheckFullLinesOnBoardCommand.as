@@ -5,6 +5,7 @@ package pl.jaqjacek.games.tetris.controller.board
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.tetris.model.BlockVO;
 	import pl.jaqjacek.games.tetris.model.BoardBlockVO;
+	import pl.jaqjacek.games.tetris.model.BoardSpliceVO;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 	
 	/**
@@ -31,7 +32,8 @@ package pl.jaqjacek.games.tetris.controller.board
 						board.setBlockAt(j, i, 0);
 						facade.sendNotification(AppNotifications.UPDATE_BOARD_VIEW, new Point(j, i));
 					}
-					
+					facade.sendNotification(AppNotifications.BOARD_SPLICE_LINE, new BoardSpliceVO(board,i));
+					i++;
 				}
 			}
 		}

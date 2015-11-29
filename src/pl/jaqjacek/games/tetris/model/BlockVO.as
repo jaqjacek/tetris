@@ -92,7 +92,7 @@ package pl.jaqjacek.games.tetris.model
 			}
 		}
 		
-		public function getBlockAt(x:int=0,y:int =0 ):int
+		public function getBlockAt(x:int,y:int):int
 		{
 			return _vectorBlock[x][y];
 		}
