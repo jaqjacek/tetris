@@ -43,6 +43,8 @@ package pl.jaqjacek.games.tetris.notifications
 		static public const CHECK_ADD_BLOCK_TO_BOARD:String = "checkAddBlockToBoard";
 		static public const CHECK_FULL_LINES_ON_BOARD:String = "checkFullLinesOnBoard";
 		static public const BOARD_SPLICE_LINE:String = "boardSpliceLine";
+		static public const CHECK_END_OF_GAME:String = "checkEndOfGame";
+		static public const END_GAME:String = "endGame";
 	}
 
 }
