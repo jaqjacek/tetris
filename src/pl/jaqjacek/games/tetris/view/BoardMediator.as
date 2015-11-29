@@ -6,6 +6,7 @@ package pl.jaqjacek.games.tetris.view
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	import pl.jaqjacek.games.tetris.model.BlockProxy;
+	import pl.jaqjacek.games.tetris.model.BlockVO;
 	import pl.jaqjacek.games.tetris.model.BoardBlockVO;
 	import pl.jaqjacek.games.tetris.model.ParamsProxy;
 	import pl.jaqjacek.games.tetris.notifications.AppNotifications;
@@ -29,7 +30,7 @@ package pl.jaqjacek.games.tetris.view
 		override public function onRegister():void 
 		{
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
-			_boardBlock = new BoardBlockVO(8, proxy.gameBoardWidth, proxy.gameBoardHeight);
+			_boardBlock = new BoardBlockVO(BlockVO.EMPTY_COLOR, proxy.gameBoardWidth, proxy.gameBoardHeight);
 			_boardView = new BoardView();
 		}
 		
@@ -58,8 +59,10 @@ package pl.jaqjacek.games.tetris.view
 				break;
 				case AppNotifications.UPDATE_BOARD_VIEW:
 					updatePoint = nBody as Point;
-					if(updatePoint != null) {
-						_boardView.getBlockAt(updatePoint.x, updatePoint.y).gotoAndStop(_boardBlock.getBlockAt(updatePoint.x, updatePoint.y));
+					if (updatePoint != null) {
+						var blockColor:int = _boardBlock.getBlockAt(updatePoint.x, updatePoint.y)
+						blockColor = !blockColor ? BlockVO.EMPTY_COLOR:blockColor;
+						_boardView.getBlockAt(updatePoint.x, updatePoint.y).gotoAndStop(blockColor);
 					}
 				break;
 				

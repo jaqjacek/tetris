@@ -41,6 +41,7 @@ package pl.jaqjacek.games.tetris.notifications
 		static public const ADD_BLOCK_TO_BOARD:String = "addBlockToBoard";
 		static public const UPDATE_BOARD_VIEW:String = "updateBoardView";
 		static public const CHECK_ADD_BLOCK_TO_BOARD:String = "checkAddBlockToBoard";
+		static public const CHECK_FULL_LINES_ON_BOARD:String = "checkFullLinesOnBoard";
 	}
 
 }

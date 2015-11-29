@@ -23,6 +23,7 @@ package pl.jaqjacek.games.tetris.model
 		public var currentBlockBlockPositionX:int;
 		public var currentBlockBlockPositionY:int;
 		
+		
 		public function ParamsProxy() 
 		{
 			super(NAME);
@@ -34,7 +35,7 @@ package pl.jaqjacek.games.tetris.model
 			speedMultiplayer = 1;
 			currentLevel = 1;
 			nextTickInc = 2;
-			gameBoardWidth = 16;
+			gameBoardWidth = 8;
 			gameBoardHeight = 15;
 			gameBlockSize = 20;
 			gameBoardViewStartX = 200;

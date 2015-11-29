@@ -14,6 +14,7 @@ package pl.jaqjacek.games.tetris.model
 		protected var _currentBlockIndex:int
 		protected var _vectorBlock:Vector.<Vector.<int>>;
 		private var _blockParts:Vector.<Point>;
+		static public const EMPTY_COLOR:int =8;
 		
 		public function BlockVO(p_blockColor:int=0,...rest) 
 		{
@@ -65,8 +66,18 @@ package pl.jaqjacek.games.tetris.model
 						}
 					}
 				}
-				
 			}
+		}
+		
+		public function isRowFull(rowIndex:int=0 ):Boolean
+		{
+			for (var i:int = 0; i < this.blockWidth; i++) 
+			{
+				if (!getBlockAt(i, rowIndex)) {
+					return false;
+				}
+			}
+			return true;
 		}
 		
 		public function createBlockSlots():void 
