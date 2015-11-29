@@ -24,8 +24,11 @@ package pl.jaqjacek.games.tetris.controller.blocks
 			var proxy:BlockProxy = facade.retrieveProxy(BlockProxy.NAME) as BlockProxy;
 			var paramsProxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
 			proxy.curentBlock = proxy.nextBlock;
+			paramsProxy.totalBlockPlayed++;
 			paramsProxy.resetCurrentBlockPosition();
 			facade.sendNotification(AppNotifications.NEXT_BLOCK_UPDATE);
+			facade.sendNotification(AppNotifications.UPDATE_LEVEL);
+			
 			facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.SHOW_BLOCK);
 			facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.UPDATE_BLOCK,proxy.curentBlock);
 			facade.sendNotification(AppNotifications.CHECK_END_OF_GAME);

@@ -22,6 +22,7 @@ package pl.jaqjacek.games.tetris.model
 		public var gameBoardViewStartY:Number;
 		public var currentBlockBlockPositionX:int;
 		public var currentBlockBlockPositionY:int;
+		public var totalBlockPlayed:int;
 		
 		
 		public function ParamsProxy() 

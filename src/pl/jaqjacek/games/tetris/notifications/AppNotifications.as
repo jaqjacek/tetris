@@ -52,6 +52,10 @@ package pl.jaqjacek.games.tetris.notifications
 		//points
 		static public const ADD_POINTS:String = "addPoints";
 		static public const RESET_POINTS:String = "resetPoints";
+		
+		//level
+		static public const UPDATE_LEVEL:String = "updateLevel";
+		static public const BLOCK_TO_LEVEL:String = "blockToLevel";
 	}
 
 }

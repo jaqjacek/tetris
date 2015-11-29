@@ -4,6 +4,7 @@ package pl.jaqjacek.games.tetris.controller
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	import pl.jaqjacek.games.tetris.view.BoardMediator;
 	import pl.jaqjacek.games.tetris.view.CurrentBlockMediator;
+	import pl.jaqjacek.games.tetris.view.LevelMediator;
 	import pl.jaqjacek.games.tetris.view.NextBlockMediator;
 	import pl.jaqjacek.games.tetris.view.PointsMediator;
 	
@@ -27,6 +28,7 @@ package pl.jaqjacek.games.tetris.controller
 			facade.registerMediator(new KeyboardControllerMediator(notification.getBody()));
 			facade.registerMediator(new TimeControlerMediator(notification.getBody()));
 			facade.registerMediator(new PointsMediator(notification.getBody()));
+			facade.registerMediator(new LevelMediator(notification.getBody()));
 		}
 		
 	}
