@@ -1,5 +1,7 @@
 How to read this code.
 
+Game uses PUREMVC framwork with all its magic
+
 All Notifications -> comands link are in CommandRegisterCommand
 All Mediators inicialization are in MediatorRegisterCommand
 
