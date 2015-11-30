@@ -1,4 +1,4 @@
-package pl.jaqjacek.games.tetris.view 
+package pl.jaqjacek.games.tetris.view.level 
 {
 	import flash.display.Sprite;
 	import flash.text.TextField;

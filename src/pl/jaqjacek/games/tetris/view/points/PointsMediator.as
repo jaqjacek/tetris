@@ -1,4 +1,4 @@
-package pl.jaqjacek.games.tetris.view 
+package pl.jaqjacek.games.tetris.view.points 
 {
 	import flash.display.Sprite;
 	import org.puremvc.as3.interfaces.INotification;
