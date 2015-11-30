@@ -1,0 +1,38 @@
+How to read this code.
+
+All Notifications -> comands link are in CommandRegisterCommand
+All Mediators inicialization are in MediatorRegisterCommand
+
+Main class create instance of AppFacade and call startup() function on it.
+AppFacade send AppNotifications.STARTUP notification:
+StartupCommand executes:
+	ProxyRegisterCommand
+	MediatorRegisterCommand
+		create essential game elements 
+	CommandRegisterCommand
+	
+AppFacade send AppNotifications.START_GAME notification:
+	initialize blocks, board, HUD
+	start Timer
+	
+After timer start mediator TimeControlerMediator send tick.
+	MoveAfterTickCommand check if proper amount of block passes Acording to ParamsProxy parameters and try move block down
+		sending (CurrentBlockMediator.NAME+AppNotifications.MOVE_BLOCK_DOW)
+			CurrentBlockMediator move block down and send notifications that check if block should be added to board
+				CheckAddBlockToBoardCommand: i should be added:
+					AppNotifications.ADD_BLOCK_TO_BOARD
+					AppNotifications.NEXT_CURRENT_BLOCK
+					AppNotifications.CHECK_FULL_LINES_ON_BOARD
+					
+KeyboardControllerMediator check if arrows are press and send command to control block
+UP arrow rotate block:
+	CheckIfBlockCanBeRotatedCommand
+		CurrentBlockMediator rotates block
+SIDE arrows
+	MoveBlockCommand: check if block can be moved
+		CurrentBlockMediator moves block according to direction pressed
+Down arrow pressing and unpressing speeds up moving block by changing parameters in ParamsProxy
+	StartMovingUpCommand
+	StopMovingUpCommand
+	
+if you are at this point rest of calsses should be self explaining
