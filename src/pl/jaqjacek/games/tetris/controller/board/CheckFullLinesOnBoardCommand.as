@@ -38,7 +38,7 @@ package pl.jaqjacek.games.tetris.controller.board
 					destroyedLinesAmmount++;
 				}
 			}
-			facade.sendNotification(AppNotifications.ADD_POINTS, destroyedLinesAmmount);
+			facade.sendNotification(AppNotifications.DESTROYED_LINES_AMOUNT, destroyedLinesAmmount);
 		}
 		
 	}
