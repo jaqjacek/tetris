@@ -26,19 +26,21 @@ package pl.jaqjacek.games.tetris.controller.board
 			var addColor:int;
 			var addBlock:Boolean = false;
 			var partY:int;
+			var lastY:int;
 			var partX:int;
 
 			for each (var part:Point in blockToBoard.block.blockParts) 
 			{
 				partY = blockToBoard.currentY + part.y;
+				lastY = blockToBoard.lastY + part.y;
 				partX = blockToBoard.currentX + part.x;
 
-				if (partY >= paramsProxy.gameBoardHeight) {
+				if (partY >= paramsProxy.gameBoardHeight || lastY >=paramsProxy.gameBoardHeight ) {
 					addBlock = true;
 					break;
 				}
 				
-				if (blockToBoard.board.getBlockAt(partX, partY)) {
+				if (blockToBoard.board.getBlockAt(partX, partY) || blockToBoard.board.getBlockAt(partX, lastY)) {
 					addBlock = true;
 					break
 				}

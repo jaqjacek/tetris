@@ -19,7 +19,7 @@ package pl.jaqjacek.games.tetris.controller.moving
 		override public function execute(notification:INotification):void 
 		{
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
-			proxy.speedMultiplayer = 5;
+			proxy.nextTickInc = 1;
 		}
 		
 	}

@@ -61,11 +61,12 @@ package pl.jaqjacek.games.tetris.view
 					directionY = nBody as Number;
 					lastY = paramsProxy.currentBlockBlockPositionY;
 					nextViewY = this._blockView.y + directionY;
-					if (nextViewY - (paramsProxy.currentBlockBlockPositionY *paramsProxy.gameBlockSize) >= 1) {
-						paramsProxy.currentBlockBlockPositionY++;
+					this._blockView.y = nextViewY;
+					if (nextViewY - (paramsProxy.currentBlockBlockPositionY * paramsProxy.gameBlockSize) >= 1) {
+						paramsProxy.currentBlockBlockPositionY = Math.floor(nextViewY / paramsProxy.gameBlockSize);
+						//lastY = paramsProxy.currentBlockBlockPositionY - 1;
 						checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
 					}
-					this._blockView.y = nextViewY
 					
 				break;
 				
