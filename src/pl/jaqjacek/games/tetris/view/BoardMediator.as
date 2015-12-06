@@ -84,7 +84,6 @@ package pl.jaqjacek.games.tetris.view
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
 			_boardView.x = proxy.gameBoardViewStartX;
 			_boardView.y = proxy.gameBoardViewStartY;
-
 		}
 		
 		public function addBlockToView(x:int,y:int,block:MovieClip):void 

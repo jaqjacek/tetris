@@ -36,7 +36,8 @@ package pl.jaqjacek.games.tetris.view
 			var listNotifications:Array = super.listNotificationInterests();
 			listNotifications.push(mediatorName+AppNotifications.ROTATE_BLOCK);
 			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK);
-			listNotifications.push(mediatorName+AppNotifications.MOVE_BLOCK_DOWN);
+			listNotifications.push(AppNotifications.MOVE_BLOCK_DOWN);
+			listNotifications.push(mediatorName+AppNotifications.CHECK_MOVE_BLOCK_DOWN);
 			listNotifications.push(AppNotifications.ADD_BLOCK_TO_BOARD);
 			return listNotifications;
 		}
@@ -57,21 +58,21 @@ package pl.jaqjacek.games.tetris.view
 					this._blockView.x = paramsProxy.getCurrentBlockViewX();
 				break;
 				
-				case mediatorName+AppNotifications.MOVE_BLOCK_DOWN:
+				case mediatorName+AppNotifications.CHECK_MOVE_BLOCK_DOWN:
 					directionY = nBody as Number;
 					lastY = paramsProxy.currentBlockBlockPositionY;
 					nextViewY = this._blockView.y + directionY;
-					this._blockView.y = nextViewY;
-					if (nextViewY - (paramsProxy.currentBlockBlockPositionY * paramsProxy.gameBlockSize) >= 1) {
-						paramsProxy.currentBlockBlockPositionY = Math.floor(nextViewY / paramsProxy.gameBlockSize);
-						//lastY = paramsProxy.currentBlockBlockPositionY - 1;
-						checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
-					}
-					
+					paramsProxy.currentBlockBlockPositionY = Math.ceil(nextViewY / paramsProxy.gameBlockSize);
+					checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
 				break;
 				
 				case AppNotifications.ADD_BLOCK_TO_BOARD:
+					trace(_blockView.y);
 					nextViewY = 0;
+				break;
+				
+				case  AppNotifications.MOVE_BLOCK_DOWN:
+					moveBlock();
 				break;
 				
 				case mediatorName+AppNotifications.ROTATE_BLOCK:
@@ -79,6 +80,12 @@ package pl.jaqjacek.games.tetris.view
 				break;
 				default:
 			}
+		}
+		
+		public function moveBlock():void 
+		{
+			this._blockView.y = nextViewY;
+			nextViewY = 0;
 		}
 		
 		override public function setBlock(block:BlockVO):void 

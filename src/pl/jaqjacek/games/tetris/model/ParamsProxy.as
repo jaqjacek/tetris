@@ -32,7 +32,7 @@ package pl.jaqjacek.games.tetris.model
 		
 		override public function onRegister():void 
 		{
-			currentSpeedDown = 10;
+			currentSpeedDown = 5;
 			speedMultiplayer = 1;
 			currentLevel = 1;
 			nextTickInc = 3;

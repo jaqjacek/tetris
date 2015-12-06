@@ -25,7 +25,7 @@ package pl.jaqjacek.games.tetris.controller.moving
 			var proxy:ParamsProxy = facade.retrieveProxy(ParamsProxy.NAME) as ParamsProxy;
 			if (tick >= proxy.nextTickMoveDown) {
 				proxy.nextTickMoveDown = tick + proxy.nextTickInc;
-				facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.MOVE_BLOCK_DOWN, proxy.getMoveDownDistance() );
+				facade.sendNotification(CurrentBlockMediator.NAME+AppNotifications.CHECK_MOVE_BLOCK_DOWN, proxy.getMoveDownDistance() );
 			}
 		}
 		

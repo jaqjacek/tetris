@@ -50,6 +50,9 @@ package pl.jaqjacek.games.tetris.controller.board
 				facade.sendNotification(AppNotifications.NEXT_CURRENT_BLOCK);
 				facade.sendNotification(AppNotifications.CHECK_FULL_LINES_ON_BOARD,blockToBoard.board);
 			}
+			else {
+				facade.sendNotification(AppNotifications.MOVE_BLOCK_DOWN);
+			}
 		}
 	
 	}
