@@ -1,2 +1,2 @@
-When speeding up block move out of current position before its check if can be moved
-When there is a gap in column of block and you move blokc in it. Block move on other blocks before it stops.
+fix: When speeding up block move out of current position before its check if can be moved
+fix: When there is a gap in column of block and you move blokc in it. Block move on other blocks before it stops.
