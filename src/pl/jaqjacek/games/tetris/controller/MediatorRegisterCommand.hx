@@ -1,0 +1,33 @@
+package pl.jaqjacek.games.tetris.controller ;
+import org.puremvc.haxe.interfaces.INotification;
+import org.puremvc.haxe.patterns.command.SimpleCommand;
+import pl.jaqjacek.games.tetris.view.BoardMediator;
+import pl.jaqjacek.games.tetris.view.CurrentBlockMediator;
+import pl.jaqjacek.games.tetris.view.level.LevelMediator;
+import pl.jaqjacek.games.tetris.view.NextBlockMediator;
+import pl.jaqjacek.games.tetris.view.points.PointsMediator;
+
+/**
+ * ...
+ * @author jaq
+ */
+class MediatorRegisterCommand extends SimpleCommand 
+{
+	
+	public function new()
+	{
+		super();
+	}
+	
+	override public function execute(notification:INotification):Void 
+	{
+		facade.registerMediator(new NextBlockMediator(notification.getBody()));
+		facade.registerMediator(new CurrentBlockMediator(notification.getBody()));
+		facade.registerMediator(new BoardMediator(notification.getBody()));
+		facade.registerMediator(new KeyboardControllerMediator(notification.getBody()));
+		facade.registerMediator(new TimeControlerMediator(notification.getBody()));
+		facade.registerMediator(new PointsMediator(notification.getBody()));
+		facade.registerMediator(new LevelMediator(notification.getBody()));
+	}
+	
+}
