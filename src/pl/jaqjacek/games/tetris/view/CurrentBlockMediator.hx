@@ -50,39 +50,67 @@ class CurrentBlockMediator extends BlockMediator
 		var directionY:Float;
 		var currentTick:Int;
 		var lastY:Int;
-		var moveBlockString:String = mediatorName+AppNotifications.MOVE_BLOCK;
-		var moveBlockDown:String = AppNotifications.MOVE_BLOCK_DOWN;
-		var blockRotate:String =  mediatorName+AppNotifications.ROTATE_BLOCK;
-		var checkMoveBlockDown:String =  mediatorName+AppNotifications.CHECK_MOVE_BLOCK_DOWN;
-		switch(nName)
+		var options:Array<String> = [
+			mediatorName+AppNotifications.MOVE_BLOCK,
+			AppNotifications.MOVE_BLOCK_DOWN,
+			mediatorName+AppNotifications.ROTATE_BLOCK,
+			mediatorName+AppNotifications.CHECK_MOVE_BLOCK_DOWN,
+			AppNotifications.ADD_BLOCK_TO_BOARD
+		];
+		switch (options.indexOf(nName)) 
 		{
-			case AppNotifications.ADD_BLOCK_TO_BOARD:
+			case 0:
+				directionX = cast nBody;
+				this._blockView.x = paramsProxy.getCurrentBlockViewX();
+			case 1:
+				moveBlock();
+			case 2:
+				rotateBlock();
+			case 3:
+				directionY = cast nBody;
+				lastY=paramsProxy.currentBlockBlockPositionY;
+				nextViewY=this._blockView.y + directionY;
+				paramsProxy.currentBlockBlockPositionY = Math.ceil(nextViewY / paramsProxy.gameBlockSize);
+				checkBlockToBoard(paramsProxy.currentBlockBlockPositionX, lastY);
+			case 4:
 				nextViewY=0;
+			default:
+				
 		}
+		//var moveBlockString:String = mediatorName+AppNotifications.MOVE_BLOCK;
+		//var moveBlockDown:String = AppNotifications.MOVE_BLOCK_DOWN;
+		//var blockRotate:String =  mediatorName+AppNotifications.ROTATE_BLOCK;
+		//var checkMoveBlockDown:String =  mediatorName+AppNotifications.CHECK_MOVE_BLOCK_DOWN;
+		//switch(nName)
+		//{
+			//case AppNotifications.ADD_BLOCK_TO_BOARD:
+				//nextViewY=0;
+		//}
+		//
+		//if (nName == blockRotate)
+		//{
+			//rotateBlock();
+		//}
+		//
+		//if (nName == checkMoveBlockDown)
+		//{
+			//directionY = cast nBody;
+			//lastY=paramsProxy.currentBlockBlockPositionY;
+			//nextViewY=this._blockView.y + directionY;
+			//paramsProxy.currentBlockBlockPositionY = Math.ceil(nextViewY / paramsProxy.gameBlockSize);
+			//checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
+		//}
+		//
+		//if (nName == moveBlockDown)
+		//{
+			//moveBlock();
+		//}
+		//if (nName == moveBlockString)
+		//{
+			//directionX = cast nBody;
+			//this._blockView.x=paramsProxy.getCurrentBlockViewX();
+		//}
 		
-		if (nName == blockRotate)
-		{
-			rotateBlock();
-		}
-		
-		if (nName == checkMoveBlockDown)
-		{
-			directionY = cast nBody;
-			lastY=paramsProxy.currentBlockBlockPositionY;
-			nextViewY=this._blockView.y + directionY;
-			paramsProxy.currentBlockBlockPositionY = Math.ceil(nextViewY / paramsProxy.gameBlockSize);
-			checkBlockToBoard(paramsProxy.currentBlockBlockPositionX,lastY);
-		}
-		
-		if (nName == moveBlockDown)
-		{
-			moveBlock();
-		}
-		if (nName == moveBlockString)
-		{
-			directionX = cast nBody;
-			this._blockView.x=paramsProxy.getCurrentBlockViewX();
-		}
 	}
 	
 	public function moveBlock():Void 
@@ -101,7 +129,6 @@ class CurrentBlockMediator extends BlockMediator
 	
 	public function rotateBlock():Void 
 	{
-		trace("block", _block);
 		_block.goToNextFormation();
 		super.setBlock(_block);
 	}
