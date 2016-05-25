@@ -1,5 +1,4 @@
 package pl.jaqjacek.games.tetris.view ;
-import flash.display.DisplayObjectContainer;
 import org.puremvc.haxe.interfaces.INotification;
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.model.BlockProxy;
@@ -86,12 +85,7 @@ class BlockMediator extends Mediator
 	
 	public function showBlock():Void 
 	{
-		getStage().addChild(_blockView);
-	}
-	
-	private function getStage():DisplayObjectContainer
-	{
-		return cast viewComponent;
+		viewComponent.addChild(_blockView);
 	}
 	
 }

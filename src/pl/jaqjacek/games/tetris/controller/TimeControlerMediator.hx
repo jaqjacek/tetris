@@ -1,7 +1,7 @@
 package pl.jaqjacek.games.tetris.controller;
-import flash.display.InteractiveObject;
-import flash.display.Sprite;
+#if flash
 import flash.events.Event;
+#end
 import org.puremvc.haxe.interfaces.INotification;
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.notifications.AppNotifications;
@@ -34,7 +34,7 @@ class TimeControlerMediator extends Mediator
 					AppNotifications.UNPAUSE_TIMER
 		];
 	}
-	
+	#if flash
 	override public function handleNotification(notification:INotification):Void 
 	{
 		var nName:String=notification.getName();
@@ -57,5 +57,6 @@ class TimeControlerMediator extends Mediator
 		_currentTick++;
 		facade.sendNotification(AppNotifications.TIMER_TICK, _currentTick);
 	}
+	#end
 	
 }

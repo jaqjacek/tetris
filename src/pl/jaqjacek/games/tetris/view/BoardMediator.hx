@@ -1,7 +1,9 @@
 package pl.jaqjacek.games.tetris.view;
-import flash.display.MovieClip;
-import flash.display.Sprite;
+#if flash
 import flash.geom.Point;
+#elseif js
+import pixi.core.math.Point;
+#end
 import org.puremvc.haxe.interfaces.INotification;
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.model.BlockProxy;

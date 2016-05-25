@@ -1,12 +1,11 @@
 package pl.jaqjacek.games.tetris.controller;
-import flash.display.MovieClip;
+#if flash
 import flash.display.Sprite;
 import flash.events.KeyboardEvent;
 import flash.ui.Keyboard;
-import org.puremvc.haxe.interfaces.INotification;
+#end
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.notifications.AppNotifications;
-import pl.jaqjacek.games.tetris.view.CurrentBlockMediator;
 
 /**
  * ...
@@ -19,7 +18,7 @@ class KeyboardControllerMediator extends Mediator
 	{
 		super(mediatorName, viewComponent);
 	}
-	
+	#if flash
 	override public function onRegister():Void 
 	{
 		var mainStage:Sprite=cast viewComponent, Sprite;
@@ -53,5 +52,6 @@ class KeyboardControllerMediator extends Mediator
 				facade.sendNotification(AppNotifications.MOVE_BLOCK, 1);
 		}
 	}
+	#end
 	
 }

@@ -1,7 +1,5 @@
 package pl.jaqjacek.games.tetris;
 
-import flash.display.Sprite;
-import org.puremvc.haxe.interfaces.IFacade;
 import org.puremvc.haxe.patterns.facade.Facade;
 import pl.jaqjacek.games.tetris.controller.StartupCommand;
 import pl.jaqjacek.games.tetris.notifications.AppNotifications;
@@ -23,7 +21,7 @@ class AppFacade extends Facade
 		registerCommand(AppNotifications.STARTUP, StartupCommand);
 	}
 	
-	public function startup(mainMc:Sprite):Void
+	public function startup(mainMc:Dynamic):Void
 	{
 		this.sendNotification(AppNotifications.STARTUP, mainMc);
 		this.sendNotification(AppNotifications.START_GAME);

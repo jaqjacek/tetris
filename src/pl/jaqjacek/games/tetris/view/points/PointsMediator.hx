@@ -1,5 +1,4 @@
 package pl.jaqjacek.games.tetris.view.points;
-import flash.display.Sprite;
 import org.puremvc.haxe.interfaces.INotification;
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.notifications.AppNotifications;

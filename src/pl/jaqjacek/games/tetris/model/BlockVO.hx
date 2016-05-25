@@ -1,5 +1,9 @@
 package pl.jaqjacek.games.tetris.model ;
+#if flash
 import flash.geom.Point;
+#elseif js
+import pixi.core.math.Point;
+#end
 /**
  * ...
  * @author jaq

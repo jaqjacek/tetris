@@ -1,5 +1,4 @@
 package pl.jaqjacek.games.tetris.view ;
-import flash.display.Sprite;
 
 /**
  * ...

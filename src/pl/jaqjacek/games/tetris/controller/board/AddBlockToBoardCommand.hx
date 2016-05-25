@@ -1,5 +1,9 @@
 package pl.jaqjacek.games.tetris.controller.board ;
+#if flash
 import flash.geom.Point;
+#elseif js
+import pixi.core.math.Point;
+#end
 import org.puremvc.haxe.interfaces.INotification;
 import org.puremvc.haxe.patterns.command.SimpleCommand;
 import pl.jaqjacek.games.tetris.model.BlockToBoardVO;

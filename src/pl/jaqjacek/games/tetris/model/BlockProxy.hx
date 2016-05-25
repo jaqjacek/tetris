@@ -1,8 +1,11 @@
 package pl.jaqjacek.games.tetris.model ;
-import flash.display.MovieClip;
 import org.puremvc.haxe.patterns.proxy.Proxy;
+#if flash
 import pl.jaqjacek.games.tetris.view.FlashGameBlock;
+#elseif js
 import pl.jaqjacek.games.tetris.view.IGameBlock;
+#end
+import pl.jaqjacek.games.tetris.view.JSGameBlock;
 
 /**
  * ...
@@ -48,7 +51,11 @@ class BlockProxy extends Proxy
 	
 	public function getBlockMedia(blockColor:Int=1):IGameBlock 
 	{
-		var tmpBlock:IGameBlock=new FlashGameBlock();
+		#if flash
+		var tmpBlock:IGameBlock = new FlashGameBlock();
+		#elseif js
+		var tmpBlock:IGameBlock = new JSGameBlock();
+		#end
 		tmpBlock.gotoAndStop(blockColor);
 		return tmpBlock;
 	}

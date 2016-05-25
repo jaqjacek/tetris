@@ -1,5 +1,4 @@
 package pl.jaqjacek.games.tetris.model ;
-import flash.geom.Point;
 import org.puremvc.haxe.patterns.proxy.Proxy;
 
 /**

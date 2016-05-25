@@ -1,10 +1,18 @@
 package pl.jaqjacek.games.tetris.view;
+import pixi.core.display.Container;
+#if flash
 import flash.display.Sprite;
+#elsif js
+#end
 /**
  * ...
  * @author jaq
  */
+#if flash
 class BlockView extends Sprite
+#elseif js
+class BlockView extends Container
+#end
 {
 	var _blocks:Array<IGameBlock>;
 	public function new()
@@ -50,9 +58,12 @@ class BlockView extends Sprite
 	
 	public function clean():Void 
 	{
+		#if flash
 		while(numChildren>0){
 			removeChildAt(0);
 		}
+		#end
+		//TODO nead clean in js target
 	}
 	
 }
