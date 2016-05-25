@@ -1,5 +1,4 @@
 package pl.jaqjacek.games.tetris.view;
-import flash.display.MovieClip;
 import flash.display.Sprite;
 /**
  * ...
@@ -7,9 +6,11 @@ import flash.display.Sprite;
  */
 class BlockView extends Sprite
 {
+	var _blocks:Array<IGameBlock>;
 	public function new()
 	{
 		super();
+		_blocks = [];
 	}
 	
 	public function show():Void 
@@ -22,12 +23,13 @@ class BlockView extends Sprite
 		visible=false;
 	}
 	
-	public function createBlockAt(x:Int,y:Int,block:MovieClip):Void 
+	public function createBlockAt(x:Int,y:Int,block:IGameBlock):Void 
 	{
-		block.x=x*block.width;
-		block.y=y*block.height;
-		addChild(block);
-		block.name=getBlockName(x, y);
+		block.x = x * block.width;
+		block.y = y * block.height;
+		addChild(block.getContainer());
+		block.name = getBlockName(x, y);
+		_blocks.push(block);
 	}
 	
 	public function getBlockName(x:Int, y:Int):String
@@ -35,9 +37,15 @@ class BlockView extends Sprite
 		return "block_" + x + "_" + y;
 	}
 	
-	public function getBlockAt(x:Int,y:Int):MovieClip
+	public function getBlockAt(x:Int,y:Int):IGameBlock
 	{
-		return cast getChildByName(getBlockName(x, y));
+		for (block in _blocks) 
+		{
+			if (block.name == getBlockName(x, y)) {
+				return block;
+			}
+		}
+		return null;
 	}
 	
 	public function clean():Void 

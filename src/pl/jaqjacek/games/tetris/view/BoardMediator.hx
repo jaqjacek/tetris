@@ -82,7 +82,7 @@ class BoardMediator extends Mediator
 
 	}
 	
-	public function addBlockToView(x:Int,y:Int,block:MovieClip):Void 
+	public function addBlockToView(x:Int,y:Int,block:IGameBlock):Void 
 	{
 		var proxy:ParamsProxy=cast facade.retrieveProxy(ParamsProxy.NAME);
 		block.width=block.height=proxy.gameBlockSize;

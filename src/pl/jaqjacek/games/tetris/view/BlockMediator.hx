@@ -1,6 +1,5 @@
 package pl.jaqjacek.games.tetris.view ;
 import flash.display.DisplayObjectContainer;
-import flash.display.MovieClip;
 import org.puremvc.haxe.interfaces.INotification;
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.model.BlockProxy;
@@ -49,7 +48,7 @@ class BlockMediator extends Mediator
 		}
 	}
 	
-	public function addBlockToView(x:Int,y:Int,block:MovieClip):Void 
+	public function addBlockToView(x:Int,y:Int,block:IGameBlock):Void 
 	{
 		block.width=block.height=blockSize;
 		_blockView.createBlockAt(x,y,block);
