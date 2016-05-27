@@ -63,6 +63,11 @@ class BlockView extends Container
 			removeChildAt(0);
 		}
 		#end
+		#if js
+			while (children.length > 0) {
+				removeChildAt(0);
+			}
+		#end
 		//TODO nead clean in js target
 	}
 	

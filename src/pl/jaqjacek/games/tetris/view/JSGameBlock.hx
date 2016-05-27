@@ -10,6 +10,7 @@ import pixi.core.textures.Texture;
 class JSGameBlock implements IGameBlock
 {
 	var _block:Container;
+	var _sprite:Sprite;
 	public var name:String;
 	
 	public var x(get, set):Float;
@@ -22,13 +23,44 @@ class JSGameBlock implements IGameBlock
 	public function new() 
 	{
 		_block = new Container();
-		var texture = Texture.fromImage("block_blue.png");
-		_block.addChild(new Sprite(texture));
+		_sprite = new Sprite();
 	}
 	
 	public function gotoAndStop(blockColor:Int) 
 	{
-		//_block.gotoAndStop(blockColor);
+		var path:String = 'assets/img/block_';
+		var color:String = 'white';
+		switch (blockColor) 
+		{
+			case 1:
+				color = 'yellow';
+			case 2:
+				color = 'red';
+			case 3:
+				color = 'purple';
+			case 4:
+				color = 'orange';
+			case 5:
+				color = 'green';
+			case 6:
+				color = 'cyan';
+			case 7:
+				color = 'blue';
+			default:
+				
+		}
+		while (_block.children.length > 0) {
+			_block.removeChildAt(0);
+		}
+		while (_sprite.children.length > 0) {
+			_sprite.removeChildAt(0);
+		}
+		path = path + color + '.png';
+		var texture = Texture.fromImage(path);
+		_sprite = new Sprite(texture);
+		_block.addChild(_sprite);
+		_sprite.width  = 50;
+		_sprite.height  = 50;
 	}
 	
 	public function set_x(newX:Float) 
@@ -53,22 +85,22 @@ class JSGameBlock implements IGameBlock
 	
 	public function set_width(newWidth:Float) 
 	{
-		return _block.width = newWidth;
+		return _sprite.width = newWidth;
 	}
 	
 	public function get_width():Float
 	{
-		return _block.width;
+		return _sprite.width;
 	}
 	
 	public function set_height(newHeight:Float) 
 	{
-		return _block.height = newHeight;
+		return _sprite.height = newHeight;
 	}
 	
 	public function get_height():Float
 	{
-		return _block.height;
+		return _sprite.height;
 	}
 	
 	public function getContainer():Container 

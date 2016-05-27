@@ -29,4 +29,11 @@ class NextBlockMediator extends BlockMediator
 		_blockView.show();
 	}
 	
+	override public function addBlockToView(x:Int,y:Int,block:IGameBlock):Void 
+	{
+		block.width=20;
+		block.height=20;
+		_blockView.createBlockAt(x,y,block);
+	}
+	
 }
