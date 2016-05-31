@@ -59,4 +59,32 @@ class TimeControlerMediator extends Mediator
 	}
 	#end
 	
+	#if js
+	override public function handleNotification(notification:INotification):Void 
+	{
+		var nName:String=notification.getName();
+		var nBody:Dynamic=notification.getBody();
+		
+		switch(nName)
+		{
+			case AppNotifications.START_TIMER:
+				_currentTick = 0;
+				if (nBody != null) {
+					viewComponent = nBody;
+				}
+				viewComponent.onUpdate = updateJSHandler;
+			case AppNotifications.STOP_TIMER:
+				_currentTick=0;
+				viewComponent.onUpdate = null;
+			default:
+		}
+	}
+	
+	function updateJSHandler(time:Float=1) 
+	{
+		_currentTick++;
+		facade.sendNotification(AppNotifications.TIMER_TICK, _currentTick);
+	}
+	#end
+	
 }

@@ -31,10 +31,10 @@ class BlockView extends Container
 		visible=false;
 	}
 	
-	public function createBlockAt(x:Int,y:Int,block:IGameBlock):Void 
+	public function createBlockAt(x:Int,y:Int,block:IGameBlock,blockSize:Float):Void 
 	{
-		block.x = x * block.width;
-		block.y = y * block.height;
+		block.x = x * blockSize;
+		block.y = y * blockSize;
 		addChild(block.getContainer());
 		block.name = getBlockName(x, y);
 		_blocks.push(block);
@@ -67,6 +67,7 @@ class BlockView extends Container
 			while (children.length > 0) {
 				removeChildAt(0);
 			}
+			_blocks = [];
 		#end
 		//TODO nead clean in js target
 	}

@@ -27,7 +27,6 @@ class BlockMediator extends Mediator
 	override public function onRegister():Void 
 	{
 		_blockView=new BlockView();
-		blockSize=20;
 	}
 	
 	public function setBlock(block:BlockVO):Void 
@@ -50,7 +49,7 @@ class BlockMediator extends Mediator
 	public function addBlockToView(x:Int,y:Int,block:IGameBlock):Void 
 	{
 		block.width=block.height=blockSize;
-		_blockView.createBlockAt(x,y,block);
+		_blockView.createBlockAt(x,y,block,blockSize);
 	}
 	
 	override public function onRemove():Void 

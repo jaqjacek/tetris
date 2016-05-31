@@ -59,8 +59,6 @@ class JSGameBlock implements IGameBlock
 		var texture = Texture.fromImage(path);
 		_sprite = new Sprite(texture);
 		_block.addChild(_sprite);
-		_sprite.width  = 50;
-		_sprite.height  = 50;
 	}
 	
 	public function set_x(newX:Float) 

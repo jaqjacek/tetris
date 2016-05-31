@@ -31,7 +31,7 @@ class ParamsProxy extends Proxy
 	override public function onRegister():Void 
 	{
 		currentSpeedDown=5;
-		speedMultiplayer=1;
+		speedMultiplayer=2;
 		currentLevel=1;
 		nextTickInc=2;
 		gameBoardWidth=16;
@@ -40,6 +40,7 @@ class ParamsProxy extends Proxy
 		gameBoardViewStartX=200;
 		gameBoardViewStartY=0;
 		resetCurrentBlockPosition();
+		nextTickMoveDown = 0;
 	}
 	
 	public function resetCurrentBlockPosition():Void 

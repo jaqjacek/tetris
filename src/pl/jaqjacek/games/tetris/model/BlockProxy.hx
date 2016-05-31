@@ -55,6 +55,8 @@ class BlockProxy extends Proxy
 		var tmpBlock:IGameBlock = new FlashGameBlock();
 		#elseif js
 		var tmpBlock:IGameBlock = new JSGameBlock();
+		var proxy:ParamsProxy=cast facade.retrieveProxy(ParamsProxy.NAME);
+		tmpBlock.width=tmpBlock.height=proxy.gameBlockSize;
 		#end
 		tmpBlock.gotoAndStop(blockColor);
 		return tmpBlock;

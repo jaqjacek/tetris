@@ -1,6 +1,10 @@
 package pl.jaqjacek.games.tetris;
-
 import org.puremvc.haxe.patterns.facade.Facade;
+import pixi.core.display.Container;
+#if js
+import pixi.core.text.Text;
+#end
+import pixi.plugins.app.Application;
 import pl.jaqjacek.games.tetris.controller.StartupCommand;
 import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 /**
@@ -9,7 +13,10 @@ import pl.jaqjacek.games.tetris.notifications.AppNotifications;
  */
 class AppFacade extends Facade
 {
-	
+	#if js
+	var mainMc:Application;
+	var output:Text;
+	#end
 	public function new()
 	{
 		super();
@@ -21,18 +28,36 @@ class AppFacade extends Facade
 		registerCommand(AppNotifications.STARTUP, StartupCommand);
 	}
 	
-	public function startup(mainMc:Dynamic):Void
+	public function startup(mainMc:Application):Void
 	{
-		this.sendNotification(AppNotifications.STARTUP, mainMc);
-		this.sendNotification(AppNotifications.START_GAME);
+		#if js
+		this.mainMc = mainMc;
+		#end
+		this.sendNotification(AppNotifications.STARTUP, mainMc.stage);
+		this.sendNotification(AppNotifications.START_GAME,mainMc);
 	}
 	
 	override public function sendNotification(notificationName:String, body:Dynamic=null, type:String=null):Void 
 	{
 		//don't show timer tick sending event
 		//if(notificationName.indexOf("timerTick")==-1 && notificationName.indexOf("moveBlockDown")==-1){
-			trace(this, notificationName, body, type);
+			//trace(this, notificationName, body, type);
 		//}
+		#if js
+		if (output == null) {
+			output = new Text('test');
+			output.height = 400;
+			mainMc.stage.addChild(output);
+			output.x = 20;
+			output.y = 400;
+		}
+		var tmpArray:Array<String> = output.text.split("\n");
+		if (tmpArray.length > 3) {
+			output.text = tmpArray.pop()+"\n";
+		}
+		output.text = output.text + "\n" + notificationName+" "+body;
+		//output.text = notificationName;
+		#end
 		super.sendNotification(notificationName, body, type);
 	}
 }

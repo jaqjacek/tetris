@@ -54,18 +54,15 @@ class Main extends Application
 		super();
 		backgroundColor = 0x80FF66;
 		super.start();
-
 		stage.interactive = true;
 		var assetsToLoader:Array<String> = [];
 		init();
-		//_loader = new Loader();
-		//_loader.add("spinedata", "assets/dragon.json");
-		//_loader.load(onAssetsLoaded);
+		this.fps = 24;
 	}
 	
 	private function init(e:Dynamic=null):Void 
 	{
-		new AppFacade().startup(stage);
+		new AppFacade().startup(this);
 	}
 	
 	static function main() {
