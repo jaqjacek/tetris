@@ -1,4 +1,5 @@
 package pl.jaqjacek.games.tetris;
+import js.Browser;
 #if flash
 import flash.Lib;
 import flash.display.Sprite;
@@ -53,11 +54,14 @@ class Main extends Application
 	{
 		super();
 		backgroundColor = 0x80FF66;
+		width = 800;
+		height = 600;
+		this.fps = 24;
 		super.start();
 		stage.interactive = true;
 		var assetsToLoader:Array<String> = [];
 		init();
-		this.fps = 24;
+		
 	}
 	
 	private function init(e:Dynamic=null):Void 

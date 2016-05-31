@@ -4,6 +4,8 @@ import flash.display.Sprite;
 import flash.events.KeyboardEvent;
 import flash.ui.Keyboard;
 #end
+import js.Browser;
+import js.html.KeyEvent;
 import org.puremvc.haxe.patterns.mediator.Mediator;
 import pl.jaqjacek.games.tetris.notifications.AppNotifications;
 
@@ -54,4 +56,15 @@ class KeyboardControllerMediator extends Mediator
 	}
 	#end
 	
+	#if js
+	override public function onRegister():Void 
+	{
+		Browser.document.addEventListener('keydown', onKeyDownHandler);
+	}
+	
+	private function onKeyDownHandler(e):Void 
+	{
+		facade.sendNotification(AppNotifications.STOP_TIMER, 1);
+	}
+	#end
 }

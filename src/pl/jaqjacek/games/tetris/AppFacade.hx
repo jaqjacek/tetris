@@ -39,14 +39,9 @@ class AppFacade extends Facade
 	
 	override public function sendNotification(notificationName:String, body:Dynamic=null, type:String=null):Void 
 	{
-		//don't show timer tick sending event
-		//if(notificationName.indexOf("timerTick")==-1 && notificationName.indexOf("moveBlockDown")==-1){
-			//trace(this, notificationName, body, type);
-		//}
 		#if js
 		if (output == null) {
 			output = new Text('test');
-			output.height = 400;
 			mainMc.stage.addChild(output);
 			output.x = 20;
 			output.y = 400;
@@ -56,7 +51,6 @@ class AppFacade extends Facade
 			output.text = tmpArray.pop()+"\n";
 		}
 		output.text = output.text + "\n" + notificationName+" "+body;
-		//output.text = notificationName;
 		#end
 		super.sendNotification(notificationName, body, type);
 	}
